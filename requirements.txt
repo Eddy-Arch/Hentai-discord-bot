@@ -1,0 +1,5 @@
+requests==2.22.0
+discord.py==1.2.3
+colorama==0.4.1
+discord==1.0.1
+-e git+https://github.com/Nekos-life/nekos.py/#egg=nekos.py
