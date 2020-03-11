@@ -9,8 +9,8 @@ its quite good at moderating
 and it logs everything said in  chat into a txt file.
 
 ### website
-the bot has an offical website! heres a link:
-https://hentai-distributor.glitch.me/
+- the bot has an offical website! heres a link:
+- https://hentai-distributor.glitch.me/
 ======================================
 
 
