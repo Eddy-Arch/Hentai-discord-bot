@@ -1174,9 +1174,26 @@ async def neko(ctx):
     await ctx.send(embed=embed)
     print(Fore.WHITE + "["+ Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA+ f"{ctx.author.name} executed command !neko result: {neko}   time:{round(client.latency * 1000)}ms")
  
+
  
+@client.command()
+async def contribute(ctx):
+    embed = discord.Embed(
+        title = 'contributon',
+        description = 'you may contribute to the project on our github page. the current features on our add list are: ``music playing, sound playing, and further implemantation of the api``',
+        colour = discord.Colour.blurple()
+    )
+    neko = nekos.img("neko")
  
-client.run("")
+    embed.set_image(url= neko)
+ 
+    await ctx.send(embed=embed)
+    print(Fore.WHITE + "["+ Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA+ f"{ctx.author.name} executed command !neko result: {neko}   time:{round(client.latency * 1000)}ms")
+ 
+
+
+
+client.run("Njg4NTY5NDIzNTYwNDQxODc4.Xm2ORQ.FYtx0HzbXKzXE-wNUjFH8Cs6Whk")
  
 while True:
     print("died")
