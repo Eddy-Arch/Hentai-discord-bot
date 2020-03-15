@@ -1193,7 +1193,7 @@ async def contribute(ctx):
 
 
 #dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
-client.run("Njg4NTY5NDIzNTYwNDQxODc4.Xm2ORQ.FYtx0HzbXKzXE-wNUjFH8Cs6Whk")
+client.run("place your token in here")
  
 while True:
     print("died")
