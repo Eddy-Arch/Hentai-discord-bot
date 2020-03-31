@@ -38,7 +38,11 @@ async def help(ctx):
     embed4 = discord.Embed(
         colour=discord.Color.blue()
     )
+    embed5 = discord.Embed(
+        colour=discord.Color.red()
+    )
 
+    embed5.set_author(name="Misc")
     embed.set_author(name="Available NSFW commands")
     embed.add_field(name="+feet", value='NSFW feet pics', inline=False)
     embed.add_field(name="+yuri", value='NSFW yuri pics', inline=False)
@@ -101,6 +105,8 @@ async def help(ctx):
     embed4.add_field(name="+contribute",
                      value='get the github repository link, to which you can contribute if you choose to do so. (please do)',
                      inline=False)
+    embed5.add_field(name="+wordsfromgod", value='gives you a list of random words, which are the words of god. inspired by terry a davis, RIP.')
+    embed5.add_field(name="+coronavirus", value = 'usage: !coronavirus <country>. gives you the current world stats of the pandemic')
 
     await ctx.author.send(embed=embed)
     await ctx.author.send(embed=embed2)
