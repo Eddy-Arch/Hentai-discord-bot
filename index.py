@@ -112,6 +112,7 @@ async def help(ctx):
     await ctx.author.send(embed=embed2)
     await ctx.author.send(embed=embed3)
     await ctx.author.send(embed=embed4)
+    await ctx.author.send(embed=embed5)
 
 
 # fox_girl
