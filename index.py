@@ -1382,7 +1382,53 @@ async def contribute(ctx):
     print(
         Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !neko result: {neko}   time:{round(client.latency * 1000)}ms")
 
+@client.command()
+async def wordsfromgod(ctx):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    author = ctx.message.author
+    word_site = "https://www.wordgenerator.net/application/p.php?id=dictionary_words&type=1&spaceflag=true"
 
+    response = requests.get(word_site)
+    wordy = response.content.decode()
+    bruh = wordy.replace(",", " ")
+
+
+    embed = discord.Embed(
+        colour=discord.Color.from_rgb(r, g, b)
+    )
+    embed.set_author(name="God says:")
+    embed.add_field(name=bruh[0:256], value='This command was inspired by Terry A. davis. RIP.', inline=False)
+    await ctx.send(embed=embed)
+
+
+
+@client.command()
+async def coronavirus(ctx, reason="None"):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    author = ctx.message.author
+
+
+    embed = discord.Embed(
+        colour=discord.Color.from_rgb(r, g, b)
+    )
+    r = requests.get('https://corona-stats.online/' + reason + '?format=json')
+    stats = r.json()['data'][0]['country'], r.json()['data'][0]['cases']
+    embed.set_author(name=r.json()['data'][0]['country'])
+    embed.add_field(value='cases:', name="===========================", inline=False)
+    embed.add_field(value='cases today:', name=r.json()['data'][0]['cases'], inline=False)
+    embed.add_field(value="recovered:", name=r.json()['data'][0]['todayCases'], inline=False)
+    embed.add_field(value="deaths:", name=r.json()['data'][0]['recovered'], inline=False)
+    embed.add_field(value="died today:", name=r.json()['data'][0]['deaths'], inline=False)
+    embed.add_field(value="active:", name=r.json()['data'][0]['todayDeaths'], inline=False)
+    embed.add_field(value="critical condition:", name=r.json()['data'][0]['active'], inline=False)
+    world = "-=worldwide=- cases:" , r.json()['worldStats']['cases'] , " cases today: " , r.json()['worldStats']['todayCases'] , " deaths: " , r.json()['worldStats']['deaths'] , " died today" , r.json()['worldStats']['todayDeaths'] , " recovered: " , r.json()['worldStats']['recovered'] , " critical: " , r.json()['worldStats']['critical'] , " cases per one million: " , r.json()['worldStats']['casesPerOneMillion']
+    embed.add_field(value=world, name=r.json()['data'][0]['critical'], inline=False)
+    embed.set_author(name=r.json()['data'][0]['country'], icon_url=r.json()['data'][0]['countryInfo']['flag'])
+    await ctx.send(embed=embed)
 # dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
 client.run("demo token.")
 
