@@ -1,4 +1,4 @@
-# NSFW_Discord_bot <img src="https://2no.co/3mwx44.png" width="5%">
+# NSFW_Discord_bot 
 Welcome to my first publiclaly available discord bot souce code page!
  
 ## functionality 
