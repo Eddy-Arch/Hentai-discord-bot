@@ -20,3 +20,4 @@ and it logs everything said in  chat into a txt file.
 - basic moderation, such as kick, ban, warn. ban and kick send a message with the reason for the ban/kick, before removing the user.
 - built in coronavirus tracker
 - has terry a davis "words from god" command.
+- logs every single message into the console, and into a text file. 
