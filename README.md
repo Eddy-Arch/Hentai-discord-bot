@@ -13,6 +13,7 @@ and it logs everything said in  chat into a txt file.
 
 
 ### full feature list:
+
 - a bunch of hentai commands
 - a bunch of lewd commands
 - some social commands, such as hug, kiss, etc. 
