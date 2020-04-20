@@ -12,7 +12,7 @@ and it logs everything said in  chat into a txt file.
 - the bot has an offical website! heres a link: https://hentai-distributor.glitch.me/
 
 
-### full feature list:
+## full feature list:
 
 - a bunch of hentai commands
 - a bunch of lewd commands
