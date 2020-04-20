@@ -10,6 +10,8 @@ and it logs everything said in  chat into a txt file.
 
 ## website
 - the bot has an offical website! heres a link: https://hentai-distributor.glitch.me/
+## invite code
+- [Invite the bot to your server](https://discordapp.com/oauth2/authorize?client_id=610938779401846804&scope=bot&permissions=8)
 
 
 ## full feature list:
