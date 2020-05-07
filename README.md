@@ -26,4 +26,6 @@ and it logs everything said in  chat into a txt file.
 
 
 ## install guide:
-### - to install this on heroku, you need to: 
+### to install this on heroku, you need to: 
+- clone the repo
+- commit it to heroku, everything is already set for hosting on heroku, and services like it.
