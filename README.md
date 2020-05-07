@@ -23,3 +23,7 @@ and it logs everything said in  chat into a txt file.
 - built in coronavirus tracker
 - has terry a davis "words from god" command.
 - logs every single message into the console, and into a text file. 
+
+
+## install guide:
+### - to install this on heroku, you need to: 
