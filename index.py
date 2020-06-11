@@ -9,6 +9,7 @@ import requests
 import nekos
 from discord.ext.commands import has_permissions, CheckFailure
 import sys
+import os
 
 ##commited from arch linux belive it or not i know this is mega swagg innit
 from colorama import init
@@ -1439,22 +1440,28 @@ async def coronavirus(ctx, reason="None"):
 # dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
 client.run("demo token.")
 
-while True:
+
+t = 0
+while t != 10:
     print("died")
     time.sleep(1)
-    print("\n" * 50)
+    os.system("clear")
     print("died.")
     time.sleep(1)
-    print("\n" * 50)
+    os.system("clear")
     print("died..")
     time.sleep(1)
-    print("\n" * 50)
-    print("died...")
+    os.system("clear")
+    print("died...") 
     time.sleep(1)
-    print("\n" * 50)
+    os.system("clear")
     print("died..")
     time.sleep(1)
-    print("\n" * 50)
+    os.system("clear")
     print("died.")
     time.sleep(1)
-    print("\n" * 50)
+    os.system("clear")
+    t+= 1
+    if(t == 3):
+        exit()
+
