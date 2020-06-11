@@ -1441,6 +1441,7 @@ async def coronavirus(ctx, reason="None"):
 client.run("demo token.")
 
 
+# this is the animation that gets played in case of a crash, error, dyno error etc. if you are running this from windows, i recommend replacing "clear" with "cls" to avoid a visual bug, reminding you that the clear command is unix like only.
 t = 0
 while t != 10:
     print("died")
