@@ -1378,7 +1378,7 @@ async def contribute(ctx):
     b = random.randint(0, 255)
     embed = discord.Embed(
         title='contributon',
-        description='you may contribute to the project on our github page. the current features on our add list are: ``music playing, sound playing, and further implemantation of the api``',
+        description='contribution to the project is always welcome, feel free to contribute, edit, ,clean up, document, and improve the source code at: https://github.com/Eddy-Arch/NSFW_Discordb_bot',
         colour=discord.Colour.from_rgb(r, g, b)
     )
     neko = nekos.img("neko")
