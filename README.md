@@ -29,3 +29,15 @@ and it logs everything said in  chat into a txt file.
 ### to install this on heroku, you need to: 
 - clone the repo
 - commit it to heroku, everything is already set for hosting on heroku, and services like it.
+
+## Main idea behind the bot
+### most bots on discord nowadays are:
+- overly complex
+- are made up of multiple files
+- are hard to edit
+- have more than 10k LOC
+the main idea behind the bot is that it was written as simply as possible, with less that 2000 LOC
+it was wirtten as a bit of a meme, but its still quite good in my opinion
+less is more, etc etc.
+if you have any questions or issues with the bot, feel free to open an issue.
+happy botting! 
