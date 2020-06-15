@@ -89,6 +89,7 @@ async def help(ctx):
     embed3.add_field(name="+cuddle", value='usage: +cuddle @user u cutie', inline=False)
     embed3.add_field(name="+hug", value='usage: +hug @user u cutie', inline=False)
     embed2.add_field(name="+fox_girl", value='fox girl pics', inline=False)
+    embed2.add_field(name="+cat", value='cute kitty pics', inline=False)
     embed2.add_field(name="+neko", value='neko pics', inline=False)
     embed3.add_field(name="+owoify", value='usage: "owoifys" some text', inline=False)
     embed4.set_author(name="Moderation")
@@ -1457,6 +1458,25 @@ async def owoify(ctx,*, reason=None):
     #print(text)
     embed.add_field(name=text[0:256], value='‎', inline=False)
     await ctx.send(embed=embed)
+
+
+@client.command()
+async def cat(ctx):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    embed = discord.Embed(
+        title='cute kitties :)',
+        description='',
+        colour=discord.Colour.from_rgb(r, g, b)
+    )
+    neko = nekos.cat()
+    embed.set_image(url=neko)
+
+    await ctx.send(embed=embed)
+    print(
+        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !neko result: {neko}   time:{round(client.latency * 1000)}ms")
+
 
 # dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
 client.run("demo token")
