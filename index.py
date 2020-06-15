@@ -15,11 +15,11 @@ import os
 from colorama import init
 
 init()
-
+#set the preifx and disable the builtin help command that comes with discord.py
 client = commands.Bot(command_prefix="+")
 client.remove_command("help")
 
-
+#all of the available commands sent as a message. it consists of about 5 embedded messages with different colors. i recommend deleting this, and just linking to a website for help.
 @client.command()
 async def help(ctx):
     author = ctx.message.author
@@ -125,7 +125,7 @@ print(
 
 @client.event
 async def on_ready():
-    print("ready to rumble nigger")
+    print("")
 
 
 @client.command()
@@ -1437,8 +1437,27 @@ async def coronavirus(ctx, reason="None"):
     embed.add_field(value=world, name=r.json()['data'][0]['critical'], inline=False)
     embed.set_author(name=r.json()['data'][0]['country'], icon_url=r.json()['data'][0]['countryInfo']['flag'])
     await ctx.send(embed=embed)
+
+
+
+
+@client.command()
+async def owoify(ctx,*, reason=None):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    author = ctx.message.author
+
+
+    embed = discord.Embed(
+        colour=discord.Color.from_rgb(r, g, b)
+    )
+    text = nekos.owoify(reason)
+    #print(text)
+    embed.add_field(name=text[0:256], value='‎', inline=False)
+    await ctx.send(embed=embed)
 # dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
-client.run("demo token.")
+client.run("demo token")
 
 
 # this is the animation that gets played in case of a crash, error, dyno error etc. if you are running this from windows, i recommend replacing "clear" with "cls" to avoid a visual bug, reminding you that the clear command is unix like only. the t == 3 LOC means the amount of times the animation will repeat before terminating the application.
