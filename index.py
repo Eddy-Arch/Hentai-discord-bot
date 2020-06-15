@@ -90,6 +90,7 @@ async def help(ctx):
     embed3.add_field(name="+hug", value='usage: +hug @user u cutie', inline=False)
     embed2.add_field(name="+fox_girl", value='fox girl pics', inline=False)
     embed2.add_field(name="+neko", value='neko pics', inline=False)
+    embed3.add_field(name="+owoify", value='usage: "owoifys" some text', inline=False)
     embed4.set_author(name="Moderation")
     embed3.set_author(name="Social")
     embed2.set_author(name="More NSFW")
@@ -1440,7 +1441,7 @@ async def coronavirus(ctx, reason="None"):
 
 
 
-
+#this command takes in a string and "owoifys" it
 @client.command()
 async def owoify(ctx,*, reason=None):
     r = random.randint(0, 255)
@@ -1456,6 +1457,7 @@ async def owoify(ctx,*, reason=None):
     #print(text)
     embed.add_field(name=text[0:256], value='‎', inline=False)
     await ctx.send(embed=embed)
+
 # dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
 client.run("demo token")
 
