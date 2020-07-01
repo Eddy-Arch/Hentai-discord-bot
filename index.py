@@ -131,6 +131,14 @@ async def on_ready():
 
 
 @client.command()
+async def verify(ctx, * role: discord.Role):
+  user = ctx.message.author
+  #role = discord.utils.get(user.guild.roles, name="poop")
+  role = discord.utils.get(user.guild.roles, name='Verified')
+  await user.add_roles(role)
+
+    
+@client.command()
 async def info(ctx):
     author = ctx.message.author
 
@@ -1481,7 +1489,7 @@ async def cat(ctx):
 # dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
 client.run("demo token")
 
-
+#br
 # this is the animation that gets played in case of a crash, error, dyno error etc. if you are running this from windows, i recommend replacing "clear" with "cls" to avoid a visual bug, reminding you that the clear command is unix like only. the t == 3 LOC means the amount of times the animation will repeat before terminating the application.
 t = 0
 while t != 10:
