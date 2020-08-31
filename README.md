@@ -1,5 +1,5 @@
 # NSFW_Discord_bot 
-Welcome to my first publiclaly available discord bot source code page!
+Welcome to my first publicaly available discord bot source code page!
  
 ## functionality 
  
