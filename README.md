@@ -1,5 +1,5 @@
 # NSFW_Discord_bot 
-Welcome to my first publiclaly available discord bot souce code page!
+Welcome to my first publiclaly available discord bot source code page!
  
 ## functionality 
  
@@ -37,7 +37,7 @@ and it logs everything said in  chat into a txt file.
 - are hard to edit
 - have more than 10k LOC
 the main idea behind the bot is that it was written as simply as possible, with less that 2000 LOC
-it was wirtten as a bit of a meme, but its still quite good in my opinion
+it was written as a bit of a meme, but its still quite good in my opinion
 less is more, etc etc.
 if you have any questions or issues with the bot, feel free to open an issue.
 happy botting! 
