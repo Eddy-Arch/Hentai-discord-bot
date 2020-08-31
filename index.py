@@ -1,4 +1,5 @@
 import discord
+import asyncio
 import io
 from discord.ext import commands
 import colorama
@@ -199,21 +200,21 @@ async def on_member_join(member):
     await channel.send(embed=embed)
 
 
-@client.event
-async def on_member_remove(member):
-    print(f'{member} has left')
-    print(f'{member} has joined')
-    embed = discord.Embed(
-        title='Member left',
-        description=f'{member} has left the server',
-        colour=discord.Colour.blurple()
-    )
-    channel = discord.utils.get(member.guild.channels, name="┊❀log")
-    bruh = member.avatar_url
+#@client.event
+#async def on_member_remove(member):
+ #   print(f'{member} has left')
+  #  print(f'{member} has joined')
+   # embed = discord.Embed(
+     #   title='Member left',
+    #    description=f'{member} has left the server',
+        #colour=discord.Colour.blurple()
+    #)
+    #channel = discord.utils.get(member.guild.channels, name=admin_actions_log_channel_id)
+    #bruh = member.avatar_url
 
-    embed.set_image(url=bruh)
+#    embed.set_image(url=bruh)
 
-    await channel.send(embed=embed)
+    #await channel.send(embed=embed)
 
 
 
@@ -315,8 +316,51 @@ async def ban(ctx, member: discord.Member, *, reason=None):
                                   description="Bot doesn't have correct permissions, or bot can't ban this user.",
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
+##time ban
+@client.command(pass_context=True)
+async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
+    if reason == None:
+        await ctx.send("you must enter a reason to ban.")
+    if time == None:
+        await ctx.send("you must enter the time (in seconds) a user should be banned for")
+    else:
+        try:
+            if ctx.message.author.guild_permissions.administrator or ctx.message.author.guild_permissions.ban_members:
+                message = f"You have been warned from {ctx.guild.name} by {ctx.message.author} for {reason}"
+                embed = discord.Embed(
+                    colour=discord.Color.red()
+                )
+                embed.add_field(name="BANNED",
+                                #timemsg = time.strftime('%H:%M:%S', time)
+                                value=f'You have been temporarily banned from `` {ctx.guild.name} `` by `` {ctx.message.author} `` for `` {reason}. You will be unbanned in {time} seconds``',
+                                inline=False)
+                await member.send(embed=embed)
+                await ctx.guild.ban(member)
+                embed = discord.Embed(title="User banned was banned for {}".format(reason),
+                                      description="**{}** has been banned!".format(member),
+                                      color=discord.Color.green())
+                embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 
-
+                await ctx.send(embed=embed)
+                author = ctx.message.author
+                channel = client.get_channel(admin_actions_log_channel_id)
+                await channel.send(f"{author} just banned {member} for {reason}")
+                await asyncio.sleep(int(time))
+                print(f"{author} just unbanned {member} for {reason}")
+                await ctx.guild.unban(member)
+            else:
+                embed = discord.Embed(title="Permission Denied.",
+                                      description="You don't have permission to use this command.",
+                                      color=discord.Color.red())
+                await ctx.send(embed=embed)
+        except:
+            embed = discord.Embed(title="Permission Denied.",
+                                  description="Bot doesn't have correct permissions, or bot can't ban this user.",
+                                  color=discord.Color.red())
+            await asyncio.sleep(time)
+            print("unbanned")
+            await ctx.send(embed=embed)
+ 
 @client.command(pass_context=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
     if reason == None:
@@ -1513,6 +1557,24 @@ async def cat(ctx):
         colour=discord.Colour.from_rgb(r, g, b)
     )
     neko = nekos.cat()
+    embed.set_image(url=neko)
+
+    await ctx.send(embed=embed)
+    print(
+        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !neko result: {neko}   time:{round(client.latency * 1000)}ms")
+
+@client.command()
+async def wait(ctx, *, time = 1):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    embed = discord.Embed(
+        title='cute kitties :)',
+        description='',
+        colour=discord.Colour.from_rgb(r, g, b)
+    )
+    neko = nekos.cat()
+    await asyncio.sleep(time)
     embed.set_image(url=neko)
 
     await ctx.send(embed=embed)
