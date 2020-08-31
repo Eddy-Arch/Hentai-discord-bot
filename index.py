@@ -10,13 +10,15 @@ import nekos
 from discord.ext.commands import has_permissions, CheckFailure
 import sys
 import os
+import config
+from config import token, admin_actions_log_channel_id, general_actions_log_channel_id, verify_role_name, conf_bot_prefix
 
 ##commited from arch linux belive it or not i know this is mega swagg innit
 from colorama import init
 
 init()
 #set the preifx and disable the builtin help command that comes with discord.py
-client = commands.Bot(command_prefix="+")
+client = commands.Bot(command_prefix=conf_bot_prefix)
 client.remove_command("help")
 
 #all of the available commands sent as a message. it consists of about 5 embedded messages with different colors. i recommend deleting this, and just linking to a website for help.
@@ -133,9 +135,10 @@ async def on_ready():
 @client.command()
 async def verify(ctx, * role: discord.Role):
   user = ctx.message.author
-  #role = discord.utils.get(user.guild.roles, name="poop")
-  role = discord.utils.get(user.guild.roles, name='Verified')
+  #NzM3NzEzNTQwNjkyOTY3NDY0.XyBXRg.p1YgpH9FeiFC8jtckZAn_05ZLherole = discord.utils.get(user.guild.roles, name="poop")
+  role = discord.utils.get(user.guild.roles, name=verify_role_name)
   await user.add_roles(role)
+  await ctx.send("you've been verified ")
 
     
 @client.command()
@@ -146,9 +149,10 @@ async def info(ctx):
         colour=discord.Color.purple()
     )
     embed.set_author(name="Info")
-    embed.add_field(name="Creator:", value='Eddy#4792', inline=False)
-    embed.add_field(name="Website:", value='https://hentai-distributor.glitch.me/', inline=False)
-    embed.add_field(name="Purpouse:", value='to give cute catgirls (foxgirls are better doe)', inline=False)
+    embed.add_field(name="Creator:", value='Eddy-Gentoo#1169', inline=False)
+    embed.add_field(name="Source code", value='https://github.com/Eddy-Arch/NSFW_Discordb_bot/', inline=False)
+    embed.add_field(name="Contact", value='you can contact me via discord or email', inline=False)
+    embed.add_field(name="Personal Website", value='https://eddster.xyz', inline=False)
     await ctx.send(embed=embed)
 
 
@@ -165,6 +169,8 @@ async def on_message(message):
             message.created_at, message.content))
 
     await client.process_commands(message)
+   # channel = client.get_channel(737719268845813nnnn71)
+    #await channel.send("[{}] | [{}] | [{}] | [{}] | [{}]".format(message.guild, message.channel, message.author,message.created_at, message.content))
 
 
 @client.event
@@ -180,11 +186,11 @@ async def on_ready():
 async def on_member_join(member):
     print(f'{member} has joined')
     embed = discord.Embed(
-        title='New Member joined',
-        description=f'thanks for joining {member}! have a good time, and dont forget to follow the rules!',
+        title='Hello there!',
+        description=f'thanks for joining {member}! have a good time, and dont forget to follow the rules! to be able to chat, please type ```+verify``` in the #verify-me channel',
         colour=discord.Colour.blurple()
     )
-    channel = discord.utils.get(member.guild.channels, name="general")
+    channel = discord.utils.get(member.guild.channels, name="┊❀log")
     bruh = member.avatar_url
 
     embed.set_image(url=bruh)
@@ -196,6 +202,20 @@ async def on_member_join(member):
 @client.event
 async def on_member_remove(member):
     print(f'{member} has left')
+    print(f'{member} has joined')
+    embed = discord.Embed(
+        title='Member left',
+        description=f'{member} has left the server',
+        colour=discord.Colour.blurple()
+    )
+    channel = discord.utils.get(member.guild.channels, name="┊❀log")
+    bruh = member.avatar_url
+
+    embed.set_image(url=bruh)
+
+    await channel.send(embed=embed)
+
+
 
 
 @client.command()
@@ -218,6 +238,8 @@ async def purge(ctx, amount=5):
     if ctx.message.author.guild_permissions.administrator or ctx.message.author.guild_permissions.ban_members:
         await ctx.channel.purge(limit=amount)
         await ctx.author.send(f"purged {amount} messages.")
+        channel = client.get_channel(general_actions_log_channel_id)
+        await channel.send(str(ctx.message.author)+ " " + f"just purged {amount} messages! ")
 
 
 @client.command(pass_context=True)
@@ -241,6 +263,9 @@ async def warn(ctx, member: discord.Member, *, reason=None):
                 embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 
                 await ctx.send(embed=embed)
+                author = ctx.message.author
+                channel = client.get_channel(admin_actions_log_channel_id)
+                await channel.send(f"{author} just warned {member} for {reason} ")
             else:
                 embed = discord.Embed(title="Permission Denied.",
                                       description="You don't have permission to use this command.",
@@ -251,6 +276,8 @@ async def warn(ctx, member: discord.Member, *, reason=None):
                                   description="Bot doesn't have correct permissions, or bot can't ban this user.",
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
+
+
 
 
 @client.command(pass_context=True)
@@ -275,6 +302,9 @@ async def ban(ctx, member: discord.Member, *, reason=None):
                 embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 
                 await ctx.send(embed=embed)
+                author = ctx.message.author
+                channel = client.get_channel(admin_actions_log_channel_id)
+                await channel.send(f"{author} just banned {member} for {reason}")
             else:
                 embed = discord.Embed(title="Permission Denied.",
                                       description="You don't have permission to use this command.",
@@ -301,6 +331,7 @@ async def kick(ctx, member: discord.Member, *, reason=None):
                                 value=f'You have been kicked from `` {ctx.guild.name} `` by  `` {ctx.message.author} `` for  `` {reason} ``',
                                 inline=False)
                 await member.send(embed=embed)
+                reason = reason
                 await ctx.guild.kick(member)
                 embed = discord.Embed(title="User kicked was kicked for {}".format(reason),
                                       description="**{}** has been kicked!".format(member),
@@ -308,6 +339,9 @@ async def kick(ctx, member: discord.Member, *, reason=None):
                 embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 
                 await ctx.send(embed=embed)
+                author = ctx.message.author
+                channel =client.get_channel(admin_actions_log_channel_id)
+                await channel.send(f"{author} just kicked {member} for {reason}")
             else:
                 embed = discord.Embed(title="Permission Denied.",
                                       description="You don't have permission to use this command.",
@@ -1487,7 +1521,7 @@ async def cat(ctx):
 
 
 # dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
-client.run("demo token")
+client.run(token)
 
 #br
 # this is the animation that gets played in case of a crash, error, dyno error etc. if you are running this from windows, i recommend replacing "clear" with "cls" to avoid a visual bug, reminding you that the clear command is unix like only. the t == 3 LOC means the amount of times the animation will repeat before terminating the application.
