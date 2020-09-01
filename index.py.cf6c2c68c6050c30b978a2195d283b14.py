@@ -1546,24 +1546,6 @@ async def owoify(ctx,*, reason=None):
     await ctx.send(embed=embed)
 
 
-@client.command()
-async def cat(ctx):
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    embed = discord.Embed(
-        title='cute kitties :)',
-        description='',
-        colour=discord.Colour.from_rgb(r, g, b)
-    )
-    neko = nekos.cat()
-    embed.set_image(url=neko)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !neko result: {neko}   time:{round(client.latency * 1000)}ms")
-
-
 # dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
 client.run(token)
 
