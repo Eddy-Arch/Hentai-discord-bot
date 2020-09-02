@@ -98,6 +98,10 @@ async def help(ctx):
     embed4.set_author(name="Moderation")
     embed3.set_author(name="Social")
     embed2.set_author(name="More NSFW")
+
+    embed4.add_field(name="+timeban",
+                     value='usage: +timeban @user [reason] [time, in seconds] (this will send them a dm notifying them that theyve been temporarily banned for a reason u specify)',
+                     inline=False)
     embed4.add_field(name="+kick",
                      value='usage: +kick @user [reason] (this will send them a dm notifying them that theyve been kicked for a reason u specify)',
                      inline=False)
