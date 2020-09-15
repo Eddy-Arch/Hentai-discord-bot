@@ -13,6 +13,7 @@ import sys
 import os
 import config
 from config import token, admin_actions_log_channel_id, general_actions_log_channel_id, verify_role_name, conf_bot_prefix
+from datetime import datetime
 
 ##commited from arch linux belive it or not i know this is mega swagg innit
 from colorama import init
@@ -140,7 +141,6 @@ async def on_ready():
 @client.command()
 async def verify(ctx, * role: discord.Role):
   user = ctx.message.author
-  #NzM3NzEzNTQwNjkyOTY3NDY0.XyBXRg.p1YgpH9FeiFC8jtckZAn_05ZLherole = discord.utils.get(user.guild.roles, name="poop")
   role = discord.utils.get(user.guild.roles, name=verify_role_name)
   await user.add_roles(role)
   await ctx.send("you've been verified ")
@@ -321,6 +321,7 @@ async def ban(ctx, member: discord.Member, *, reason=None):
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
 ##time ban
+now = datetime.now()
 @client.command(pass_context=True)
 async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
     if reason == None:
@@ -336,7 +337,7 @@ async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
                 )
                 embed.add_field(name="BANNED",
                                 #timemsg = time.strftime('%H:%M:%S', time)
-                                value=f'You have been temporarily banned from `` {ctx.guild.name} `` by `` {ctx.message.author} `` for `` {reason}. You will be unbanned in {time} seconds``',
+                                value=f'You have been temporarily banned from `` {ctx.guild.name} `` by `` {ctx.message.author} `` for `` {reason}. You will be unbanned in {time} ``',
                                 inline=False)
                 await member.send(embed=embed)
                 await ctx.guild.ban(member)
@@ -345,26 +346,62 @@ async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
                                       color=discord.Color.green())
                 embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 
+            if "m" in time:
+                print("inital time: " + time)
+                bruhstr = time.replace("m", "")
                 await ctx.send(embed=embed)
                 author = ctx.message.author
                 channel = client.get_channel(admin_actions_log_channel_id)
                 await channel.send(f"{author} just banned {member} for {reason}")
-                await asyncio.sleep(int(time))
+                await asyncio.sleep(int(bruhstr) * 60)
                 print(f"{author} just unbanned {member} for {reason}")
                 await ctx.guild.unban(member)
-            else:
-                embed = discord.Embed(title="Permission Denied.",
-                                      description="You don't have permission to use this command.",
-                                      color=discord.Color.red())
+                print(time + "is up")
+            ###
+            if "h" in time:
+                print("inital time: " + time)
+                bruhstr = time.replace("h", "")
                 await ctx.send(embed=embed)
+                author = ctx.message.author
+                channel = client.get_channel(admin_actions_log_channel_id)
+                await channel.send(f"{author} just banned {member} for {reason}")
+                await asyncio.sleep(int(bruhstr) * 3600)
+                print(f"{author} just unbanned {member} for {reason}")
+                await ctx.guild.unban(member)
+
+           ### 
+
+            #    await ctx.send(embed=embed)
+            #    author = ctx.message.author
+             #   channel = client.get_channel(admin_actions_log_channel_id)
+            #    await channel.send(f"{author} just banned {member} for {reason}")
+            #    await asyncio.sleep(int(time))
+            #    print(f"{author} just unbanned {member} for {reason}")
+            #    await ctx.guild.unban(member)
+            else:
+                #embed = discord.Embed(title="Permission Denied.",
+                #                      description="You don't have permission to use this command.",
+                #                      color=discord.Color.red())
+                #await ctx.send(embed=embed)
         except:
             embed = discord.Embed(title="Permission Denied.",
                                   description="Bot doesn't have correct permissions, or bot can't ban this user.",
                                   color=discord.Color.red())
-            await asyncio.sleep(time)
-            print("unbanned")
-            await ctx.send(embed=embed)
- 
+#            if "m" in time:
+#                print("inital time: " + time)
+#               bruhstr = time.replace("m", "")
+ #               await ctx.send(embed=embed)
+  #              author = ctx.message.author
+   #             channel = client.get_channel(admin_actions_log_channel_id)
+    #            await channel.send(f"{author} just banned {member} for {reason}")
+     #           await asyncio.sleep(int(bruhstr) * 60)
+      #          print(f"{author} just unbanned {member} for {reason}")
+       #         await ctx.guild.unban(member)
+        #        print(time + "is up")
+            #await asyncio.sleep(time)
+            #print("unbanned")
+        #    await ctx.send(embed=embed)
+
 @client.command(pass_context=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
     if reason == None:
