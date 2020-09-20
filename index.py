@@ -15,6 +15,7 @@ import config
 from config import token, admin_actions_log_channel_id
 from config import general_actions_log_channel_id
 from config import verify_role_name, conf_bot_prefix
+from config import mute_role_name
 from datetime import datetime
 from colorama import init
 
@@ -25,7 +26,7 @@ init()
 client = commands.Bot(command_prefix=conf_bot_prefix)
 client.remove_command("help")
 
-# all of the available commands sent as a message. it consists of about 5 
+# all of the available commands sent as a message. it consists of about 5
 # embedded messages with different colors. i recommend deleting this, 
 # and just linking to a website for help.
 @client.command()
@@ -215,8 +216,8 @@ async def help_misc(ctx):
 
 
 print(
-    Fore.WHITE + "[" + Fore.BLUE + '+' + Fore.WHITE + "]" + Fore.BLUE + " att\
-    empting to establish connection to the client")
+    Fore.WHITE + "[" + Fore.BLUE + '+' + Fore.WHITE + "]" + Fore.BLUE + "\
+    attempting to establish connection to the client")
 
 
 @client.event
@@ -253,26 +254,31 @@ async def info(ctx):
 async def on_message(message):
     with io.open("bruhgaming78.txt", "a", encoding="utf-8") as f:
         f.write(
-            "[{}] | [{}] | [{}] @ {}: {}\n".format(message.guild, message.channel, message.author, message.created_at,
+            "[{}] | [{}] | [{}] @ {}: {}\n".format(message.guild,
+                                                   message.channel,
+                                                   message.author,
+                                                   message.created_at,
                                                    message.content))
     f.close()
     print(
-        Fore.WHITE + "[" + Fore.LIGHTRED_EX + '+' + Fore.WHITE + "]" + Fore.LIGHTRED_EX + "[{}] | [{}] | [{}] @ {}: {}".format(
+        Fore.WHITE + "[" + Fore.LIGHTRED_EX + '+' + Fore.WHITE + "]"
+        + Fore.LIGHTRED_EX + "[{}] | [{}] | [{}] @ {}: {}".format(
             message.guild, message.channel, message.author,
             message.created_at, message.content))
 
     await client.process_commands(message)
-   # channel = client.get_channel(737719268845813nnnn71)
-    #await channel.send("[{}] | [{}] | [{}] | [{}] | [{}]".format(message.guild, message.channel, message.author,message.created_at, message.content))
 
 
 @client.event
 async def on_ready():
     watching = discord.Streaming(type=1, url="https://twitch.tv/epic",
-                                 name=f"+help | helping {len(client.guilds)} guilds!")
-    await client.change_presence(status=discord.Status.idle, activity=watching)
+                                 name=f"+help | helping {len(client.guilds)} \
+                                 guilds!")
+    await client.change_presence(status=discord.Status.idle,
+                                 activity=watching)
     print(
-        Fore.WHITE + "[" + Fore.GREEN + '+' + Fore.WHITE + "]" + Fore.GREEN + " connection established, logged in as: " + client.user.name)
+        Fore.WHITE + "[" + Fore.GREEN + '+' + Fore.WHITE + "]" + Fore.GREEN
+        + " connection established, logged in as: " + client.user.name)
 
 
 @client.event
@@ -280,7 +286,9 @@ async def on_member_join(member):
     print(f'{member} has joined')
     embed = discord.Embed(
         title='Hello there!',
-        description=f'thanks for joining {member}! have a good time, and dont forget to follow the rules! to be able to chat, please type ```+verify``` in the #verify-me channel',
+        description=f'thanks for joining {member}! have a good time,\
+        and dont forget to follow the rules! to be able to chat, \
+        please type ```+verify``` in the #verify-me channel',
         colour=discord.Colour.blurple()
     )
     channel = discord.utils.get(member.guild.channels, name="┊❀log")
@@ -292,40 +300,16 @@ async def on_member_join(member):
     await channel.send(embed=embed)
 
 
-#@client.event
-#async def on_member_remove(member):
- #   print(f'{member} has left')
-  #  print(f'{member} has joined')
-   # embed = discord.Embed(
-     #   title='Member left',
-    #    description=f'{member} has left the server',
-        #colour=discord.Colour.blurple()
-    #)
-    #channel = discord.utils.get(member.guild.channels, name=admin_actions_log_channel_id)
-    #bruh = member.avatar_url
-
-#    embed.set_image(url=bruh)
-
-    #await channel.send(embed=embed)
-
-
-
-
 @client.command()
 async def ping(ctx):
-    await ctx.send(f"pong! connection speed is {round(client.latency * 1000)}ms")
+    await ctx.send(f"pong! connection speed is \
+                   {round(client.latency * 1000)}ms")
     print(
-        Fore.WHITE + "[" + Fore.YELLOW + '+' + Fore.WHITE + "]" + Fore.YELLOW + f"{ctx.author.name} executed command !ping result:{round(client.latency * 1000)}ms ")
+        Fore.WHITE + "[" + Fore.YELLOW + '+' + Fore.WHITE + "]"
+        + Fore.YELLOW + f"{ctx.author.name} executed command \
+        !ping result:{round(client.latency * 1000)}ms ")
 
-
-@client.command()
-async def helpme(ctx):
-    await ctx.send(f"gaming connection speed is {round(client.latency * 1000)}ms")
-    print(
-        Fore.WHITE + "[" + Fore.YELLOW + '+' + Fore.WHITE + "]" + Fore.YELLOW + f"{ctx.author.name} executed command !ping result:{round(client.latency * 1000)}ms ")
-
-
-# shit
+# purge command
 @client.command(pass_context=True)
 async def purge(ctx, amount=5):
     if ctx.message.author.guild_permissions.administrator or ctx.message.author.guild_permissions.ban_members:
@@ -337,23 +321,29 @@ async def purge(ctx, amount=5):
 
 @client.command(pass_context=True)
 async def warn(ctx, member: discord.Member, *, reason=None):
+    admin = ctx.message.author.guild_permissions.administrator
+    banperm = ctx.message.author.guild_permissions.ban_members
     if reason == None:
         await ctx.send("you must enter a reason to warn")
     else:
         try:
-            if ctx.message.author.guild_permissions.administrator or ctx.message.author.guild_permissions.ban_members:
-                message = f"You have been warned from `` {ctx.guild.name} ``  by `` {ctx.message.author} `` for `` {reason} ``"
+            if admin or banperm:
+                message = f"You have been warned from `` {ctx.guild.name} ``\
+                    by `` {ctx.message.author} `` for `` {reason} ``"
                 embed = discord.Embed(
                     colour=discord.Color.red()
                 )
                 embed.add_field(name="WARNED",
-                                value=f'You have been warned from `` {ctx.guild.name} ``  by `` {ctx.message.author} `` for `` {reason} ``',
+                                value=message,
                                 inline=False)
                 await member.send(embed=embed)
-                embed = discord.Embed(title="User was warned for {}".format(reason),
-                                      description="**{}** has been warned!".format(member),
+                embed = discord.Embed(title=
+                                      "User was warned for {}".format(reason),
+                                      description="**{}** has been warned!"
+                                      .format(member),
                                       color=discord.Color.green())
-                embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
+                embed.set_author(name=ctx.message.author,
+                                 icon_url=ctx.message.author.avatar_url)
 
                 await ctx.send(embed=embed)
                 author = ctx.message.author
@@ -361,12 +351,14 @@ async def warn(ctx, member: discord.Member, *, reason=None):
                 await channel.send(f"{author} just warned {member} for {reason} ")
             else:
                 embed = discord.Embed(title="Permission Denied.",
-                                      description="You don't have permission to use this command.",
+                                      description="You don't have \
+                                      permission to use this command.",
                                       color=discord.Color.red())
                 await ctx.send(embed=embed)
         except:
             embed = discord.Embed(title="Permission Denied.",
-                                  description="Bot doesn't have correct permissions, or bot can't ban this user.",
+                                  description="Bot doesn't have correct \
+                                  permissions, or bot can't ban this user.",
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
 
@@ -375,17 +367,20 @@ async def warn(ctx, member: discord.Member, *, reason=None):
 
 @client.command(pass_context=True)
 async def ban(ctx, member: discord.Member, *, reason=None):
+    admin = ctx.message.author.guild_permissions.administrator
+    banperm = ctx.message.author.guild_permissions.ban_members
+
     if reason == None:
         await ctx.send("you must enter a reason to ban.")
     else:
         try:
-            if ctx.message.author.guild_permissions.administrator or ctx.message.author.guild_permissions.ban_members:
-                message = f"You have been warned from {ctx.guild.name} by {ctx.message.author} for {reason}"
+            if admin or banperm:
+                message = f"You have been banned from `` {ctx.guild.name} `` by `` {ctx.message.author} `` for `` {reason}``"
                 embed = discord.Embed(
                     colour=discord.Color.red()
                 )
                 embed.add_field(name="BANNED",
-                                value=f'You have been banned from `` {ctx.guild.name} `` by `` {ctx.message.author} `` for `` {reason} ``',
+                                value=message,
                                 inline=False)
                 await member.send(embed=embed)
                 await ctx.guild.ban(member)
@@ -488,6 +483,73 @@ async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
             #await asyncio.sleep(time)
             #print("unbanned")
         #    await ctx.send(embed=embed)
+
+@client.command(pass_context=True)
+async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, reason=None):
+    role = discord.utils.get(member.guild.roles, name="muted")
+    if reason == None:
+        await ctx.send("you must enter a reason to mute.")
+    if time == None:
+        await ctx.send("you must enter the time (in seconds) a user should be muted for")
+    else:
+        try:
+            if ctx.message.author.guild_permissions.administrator or ctx.message.author.guild_permissions.ban_members:
+                message = f"You have been muted in {ctx.guild.name} by {ctx.message.author} for {reason}"
+                embed = discord.Embed(
+                    colour=discord.Color.red()
+                )
+                embed.add_field(name="MUTED",
+                                #timemsg = time.strftime('%H:%M:%S', time)
+                                value=f'You have been temporarily muted from `` {ctx.guild.name} `` by `` {ctx.message.author} `` for `` {reason}. You will be unmuted in {time} ``',
+                                inline=False)
+                await member.send(embed=embed)
+                await member.add_roles(role)
+                embed = discord.Embed(title="User was muted for {}".format(reason),
+                                      description="**{}** has  been muted!".format(member),
+                                      color=discord.Color.green())
+                embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
+
+            if "m" in time:
+                print("inital time: " + time)
+                bruhstr = time.replace("m", "")
+                await ctx.send(embed=embed)
+                author = ctx.message.author
+                channel = client.get_channel(admin_actions_log_channel_id)
+                await channel.send(f"{author} just muted {member} for {reason}")
+                await asyncio.sleep(int(bruhstr) * 60)
+                print(f"{author} just unbanned {member} for {reason}")
+                await member.remove_roles(role)
+                print(time + "is up")
+            ###
+            if "h" in time:
+                print("inital time: " + time)
+                bruhstr = time.replace("h", "")
+                await ctx.send(embed=embed)
+                author = ctx.message.author
+                channel = client.get_channel(admin_actions_log_channel_id)
+                await channel.send(f"{author} just muted {member} for {reason}")
+                await asyncio.sleep(int(bruhstr) * 3600)
+                print(f"{author} just unbanned {member} for {reason}")
+                await user.remove_roles(member)
+
+           ### 
+
+            #    await ctx.send(embed=embed)
+            #    author = ctx.message.author
+             #   channel = client.get_channel(admin_actions_log_channel_id)
+            #    await channel.send(f"{author} just banned {member} for {reason}")
+            #    await asyncio.sleep(int(time))
+            #    print(f"{author} just unbanned {member} for {reason}")
+            #    await ctx.guild.unban(member)
+                #embed = discord.Embed(title="Permission Denied.",
+                #                      description="You don't have permission to use this command.",
+                #                      color=discord.Color.red())
+                #await ctx.send(embed=embed)
+        except:
+            embed = discord.Embed(title="Permission Denied.",
+                                description="Bot doesn't have correct permissions, or bot can't ban this user.",
+                                color=discord.Color.red())
+
 
 @client.command(pass_context=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
@@ -1248,7 +1310,7 @@ async def anal(ctx):
 
 ####################################################################################################################################
 @client.command()
-async def slap(ctx, member: discord.Member, *, reason=None):
+async def slap(ctx, member: discord.Member, *, reason=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
@@ -1649,7 +1711,7 @@ async def coronavirus(ctx, reason="None"):
     embed.add_field(value="died today:", name=r.json()['data'][0]['deaths'], inline=False)
     embed.add_field(value="active:", name=r.json()['data'][0]['todayDeaths'], inline=False)
     embed.add_field(value="critical condition:", name=r.json()['data'][0]['active'], inline=False)
-    world = "-=worldwide=- cases:" , r.json()['worldStats']['cases'] , " cases today: " , r.json()['worldStats']['todayCases'] , " deaths: " , r.json()['worldStats']['deaths'] , " died today" , r.json()['worldStats']['todayDeaths'] , " recovered: " , r.json()['worldStats']['recovered'] , " critical: " , r.json()['worldStats']['critical'] , " cases per one million: " , r.json()['worldStats']['casesPerOneMillion']
+    world = "-=worldwide=- cases:", r.json()['worldStats']['cases'], " cases today: ", r.json()['worldStats']['todayCases'] , " deaths: ", r.json()['worldStats']['deaths'], " died today", r.json()['worldStats']['todayDeaths'], " recovered: ", r.json()['worldStats']['recovered'], " critical: ", r.json()['worldStats']['critical'], " cases per one million: ", r.json()['worldStats']['casesPerOneMillion']
     embed.add_field(value=world, name=r.json()['data'][0]['critical'], inline=False)
     embed.set_author(name=r.json()['data'][0]['country'], icon_url=r.json()['data'][0]['countryInfo']['flag'])
     await ctx.send(embed=embed)
