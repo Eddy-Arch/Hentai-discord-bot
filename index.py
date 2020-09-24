@@ -984,12 +984,12 @@ async def meow(ctx):
 
 ###########################################################
 @client.command()
-async def tickle(ctx, member: discord.Member, *, reason=None):
+async def tickle(ctx, member: discord.Member, *, reason=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
     embed = discord.Embed(
-        title=f"{ctx.message.author} tickled {member.name} because {reason}",
+        title=f"{ctx.message.author} tickled {member.name} {reason}",
         description='',
         colour=discord.Colour.from_rgb(r, g, b)
     )
@@ -1030,12 +1030,12 @@ async def lewd(ctx):
 
 ###################################################################
 @client.command()
-async def feed(ctx, member: discord.Member, *, reason=None):
+async def feed(ctx, member: discord.Member, *, reason=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
     embed = discord.Embed(
-        title=f"{ctx.message.author} fed {member.name} because {reason}",
+        title=f"{ctx.message.author} fed {member.name} {reason}",
         description='',
         colour=discord.Colour.from_rgb(r, g, b)
     )
@@ -1220,12 +1220,12 @@ async def kemonomimi(ctx):
 ###################################################################
 
 @client.command()
-async def gasm(ctx, member: discord.Member, *, reason=None):
+async def gasm(ctx, member: discord.Member, *, reason=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
     embed = discord.Embed(
-        title=f"{ctx.message.author} is in awe with {member.name} because {reason}",
+        title=f"{ctx.message.author} is in awe with {member.name} {reason}",
         description='',
         colour=discord.Colour.from_rgb(r, g ,b)
     )
@@ -1265,7 +1265,7 @@ async def nsfw_avatar(ctx):
 
 #######################################################################
 @client.command()
-async def poke(ctx, member: discord.Member, *, reason=None):
+async def poke(ctx, member: discord.Member, *, reason=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
@@ -1512,12 +1512,12 @@ async def smallboobs(ctx):
 
 #######################################################################################################################################
 @client.command()
-async def pat(ctx, member: discord.Member, *, reason=None):
+async def pat(ctx, member: discord.Member, *, reason=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
     embed = discord.Embed(
-        title=f"{ctx.message.author} petted {member.name}",
+        title=f"{ctx.message.author} patted {member.name}",
         description='',
         colour=discord.Colour.from_rgb(r, g, b)
     )
@@ -1532,7 +1532,7 @@ async def pat(ctx, member: discord.Member, *, reason=None):
 
 #####################################################################################################################################
 @client.command()
-async def kiss(ctx, member: discord.Member, *, reason=None):
+async def kiss(ctx, member: discord.Member, *, reason=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
@@ -1552,7 +1552,7 @@ async def kiss(ctx, member: discord.Member, *, reason=None):
 
 #######################################################################################################################################
 @client.command()
-async def spank(ctx, member: discord.Member, *, reason=None):
+async def spank(ctx, member: discord.Member, *, reason=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
@@ -1572,7 +1572,7 @@ async def spank(ctx, member: discord.Member, *, reason=None):
 
 #######################################################################################################################################
 @client.command()
-async def cuddle(ctx, member: discord.Member, *, reason=None):
+async def cuddle(ctx, member: discord.Member, *, reason=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
@@ -1592,7 +1592,7 @@ async def cuddle(ctx, member: discord.Member, *, reason=None):
 
 ########################################################################################################################################
 @client.command()
-async def hug(ctx, member: discord.Member, *, reason=None):
+async def hug(ctx, member: discord.Member, *, reason=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
@@ -1752,7 +1752,7 @@ while t != 10:
     print("died..")
     time.sleep(1)
     os.system("clear")
-    print("died...") 
+    print("died...")
     time.sleep(1)
     os.system("clear")
     print("died..")
