@@ -26,7 +26,7 @@ and it logs everything said in  chat into a txt file.
 
 
 ## install guide:
-### to install this on heroku/selfhost, run the following commands: 
+### to install this on baremetal/server/selfhost, run the following commands: 
 ```bash
 git clone https://github.com/Eddy-Arch/Anime-discord-bot.git
 ```
@@ -40,9 +40,15 @@ pip3 install -r requirements.txt
 ```
 
 ```bash
-python3 index.py
+nohup python3 index.py
 ```
 
+### heroku install
+#### more advanced users may wish to install the bot on heroku, and other
+#### git using hosting services.
+#### this repo contains all the files necessary for you to be able to just
+#### commit the bot to your heroku server, and it should work out of the box.
+#### (Procfile, requirements.txt)
 ## Main idea behind the bot
 ### most bots on discord nowadays are:
 - overly complex
