@@ -1,4 +1,4 @@
-# Anime discord bot 
+# Hentai discord bot 
 Welcome to my first publicaly available discord bot source code page!
  
 ## functionality 
