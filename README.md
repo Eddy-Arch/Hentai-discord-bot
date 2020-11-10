@@ -1,4 +1,4 @@
-# NSFW_Discord_bot 
+# Anime discord bot 
 Welcome to my first publicaly available discord bot source code page!
  
 ## functionality 
@@ -26,9 +26,11 @@ and it logs everything said in  chat into a txt file.
 
 
 ## install guide:
-### to install this on heroku, you need to: 
-- clone the repo
-- commit it to heroku, everything is already set for hosting on heroku, and services like it.
+### to install this on heroku/selfhost, run the following commands: 
+```````````git clone https://github.com/Eddy-Arch/Anime-discord-bot.git`
+`cd Anime-discord-bot`
+`pip3 install -r requirements.txt`
+`python3 index.py`
 
 ## Main idea behind the bot
 ### most bots on discord nowadays are:
@@ -36,8 +38,14 @@ and it logs everything said in  chat into a txt file.
 - are made up of multiple files
 - are hard to edit
 - have more than 10k LOC
-the main idea behind the bot is that it was written as simply as possible, with less that 2000 LOC
-it was written as a bit of a meme, but its still quite good in my opinion
-less is more, etc etc.
-if you have any questions or issues with the bot, feel free to open an issue.
-happy botting! 
+#### the main idea behind this bot is its simple to edit/audit and understand
+#### there are no cogs, no 10k+ files and lines of code, making customization
+#### a breeze.
+
+## FAQ
+### invalid token:
+#### the bot needs a working token, to get one, create a developer account 
+#### on discord and insert the token in config.py
+### discord.py error
+#### you need to update discord.py. you can do this by running
+`pip3 install discord.py`
