@@ -27,10 +27,21 @@ and it logs everything said in  chat into a txt file.
 
 ## install guide:
 ### to install this on heroku/selfhost, run the following commands: 
-```git clone https://github.com/Eddy-Arch/Anime-discord-bot.git```
-```cd Anime-discord-bot```
-```pip3 install -r requirements.txt```
-```python3 index.py```
+```bash
+git clone https://github.com/Eddy-Arch/Anime-discord-bot.git
+```
+
+```bash
+cd Anime-discord-bot
+```
+
+```bash
+pip3 install -r requirements.txt
+```
+
+```bash
+python3 index.py
+```
 
 ## Main idea behind the bot
 ### most bots on discord nowadays are:
