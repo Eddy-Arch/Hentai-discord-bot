@@ -212,6 +212,8 @@ async def help_misc(ctx):
     embed5.add_field(name="+coronavirus", value = 'usage: !coronavirus \
                      <country>. gives you the current world stats o\
                      f the pandemic')
+    embed5.add_field(name="+ticket", value = '+ticket <message>. \
+                     Sends a message to server staff.')
     await ctx.author.send(embed=embed5)
 
 
