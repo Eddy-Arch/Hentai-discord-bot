@@ -11,6 +11,8 @@ import nekos
 from discord.ext.commands import has_permissions, CheckFailure
 import sys
 import os
+from datetime import datetime, timedelta
+import json
 import config
 from config import token, admin_actions_log_channel_id
 from config import general_actions_log_channel_id
@@ -18,13 +20,14 @@ from config import verify_role_name, conf_bot_prefix
 from config import mute_role_name
 from datetime import datetime
 from colorama import init
-
+upt1 = time.perf_counter()
 init()
 # set the preifx and disable the builtin help command that comes with
 # discord.py
 
 client = commands.Bot(command_prefix=conf_bot_prefix)
 client.remove_command("help")
+
 
 # all of the available commands sent as a message. it consists of about 5
 # embedded messages with different colors. i recommend deleting this, 
@@ -33,21 +36,19 @@ client.remove_command("help")
 async def help(ctx):
     author = ctx.message.author
 
-
-    helpembed= discord.Embed(
+    helpembed = discord.Embed(
         colour=discord.Color.green()
     )
     helpembed.set_author(name="Options")
-    helpembed.add_field(name="+help_nsfw", value = "available nsfw commands")
-    helpembed.add_field(name="+help_more_nsfw", value = "more available nsfw \
+    helpembed.add_field(name="+help_nsfw", value="available nsfw commands")
+    helpembed.add_field(name="+help_more_nsfw", value="more available nsfw \
                         commands")
-    helpembed.add_field(name="+help_social", value = "available social comm\
+    helpembed.add_field(name="+help_social", value="available social comm\
                         ands")
-    helpembed.add_field(name="+help_admin", value = "available admin \
+    helpembed.add_field(name="+help_admin", value="available admin \
                         commands")
-    helpembed.add_field(name="+help_misc", value = "available misc \
+    helpembed.add_field(name="+help_misc", value="available misc \
                         commands")
-
 
     await ctx.author.send(embed=helpembed)
 
@@ -59,8 +60,6 @@ async def help_nsfw(ctx):
     embed = discord.Embed(
         colour=discord.Color.blurple()
     )
-
-
 
     embed.set_author(name="Available NSFW commands")
     embed.add_field(name="+feet", value='NSFW feet pics', inline=False)
@@ -100,8 +99,10 @@ async def help_nsfw(ctx):
     embed.add_field(name="+solo",
                     value='NSFW solo pic', inline=False)
     embed.add_field(name="+kemonomimi",
-                    value="kemonomimi", inline =False)
+                    value="kemonomimi", inline=False)
     await ctx.author.send(embed=embed)
+
+
 @client.command()
 async def help_more_nsfw(ctx):
     author = ctx.message.author
@@ -127,6 +128,7 @@ async def help_more_nsfw(ctx):
     embed2.add_field(name="+cat", value='cute kitty pics', inline=False)
     embed2.add_field(name="+neko", value='neko pics', inline=False)
     await ctx.author.send(embed=embed2)
+
 
 @client.command()
 async def help_social(ctx):
@@ -160,6 +162,7 @@ async def help_social(ctx):
     embed3.add_field(name="+owoify",
                      value='usage: "owoifys" some text', inline=False)
     await ctx.author.send(embed=embed3)
+
 
 @client.command()
 async def help_admin(ctx):
@@ -198,6 +201,7 @@ async def help_admin(ctx):
                      inline=False)
     await ctx.author.send(embed=embed4)
 
+
 @client.command()
 async def help_misc(ctx):
     author = ctx.message.author
@@ -209,11 +213,14 @@ async def help_misc(ctx):
     embed5.add_field(name="+wordsfromgod", value='gives you a list of random \
                      words, which are the words of god. inspired by terry \
                      a davis, RIP.')
-    embed5.add_field(name="+coronavirus", value = 'usage: !coronavirus \
+    embed5.add_field(name="+coronavirus", value='usage: !coronavirus \
                      <country>. gives you the current world stats o\
                      f the pandemic')
-    embed5.add_field(name="+ticket", value = '+ticket <message>. \
-                     Sends a message to server staff.')
+    embed5.add_field(name="+ticket", value='+ticket <message>. \
+                     Sends a message to server staff. WIP DOES NOT \
+                    EXIST YET')
+    embed5.add_field(name="+uptime", value="Shows the amount of \
+                    time that the bot has been running for.")
     await ctx.author.send(embed=embed5)
 
 
@@ -228,11 +235,12 @@ async def on_ready():
 
 
 @client.command()
-async def verify(ctx, * role: discord.Role):
-  user = ctx.message.author
-  role = discord.utils.get(user.guild.roles, name=verify_role_name)
-  await user.add_roles(role)
-  await ctx.send("you've been verified ")
+async def verify(ctx, *role: discord.Role):
+    user = ctx.message.author
+    role = discord.utils.get(user.guild.roles, name=verify_role_name)
+    await user.add_roles(role)
+    await ctx.send("you've been verified ")
+
 
 @client.command()
 async def info(ctx):
@@ -311,6 +319,7 @@ async def ping(ctx):
         + Fore.YELLOW + f"{ctx.author.name} executed command \
         !ping result:{round(client.latency * 1000)}ms ")
 
+
 # purge command
 @client.command(pass_context=True)
 async def purge(ctx, amount=5):
@@ -318,7 +327,7 @@ async def purge(ctx, amount=5):
         await ctx.channel.purge(limit=amount)
         await ctx.author.send(f"purged {amount} messages.")
         channel = client.get_channel(general_actions_log_channel_id)
-        await channel.send(str(ctx.message.author)+ " " + f"just purged {amount} messages! ")
+        await channel.send(str(ctx.message.author) + " " + f"just purged {amount} messages! ")
 
 
 @client.command(pass_context=True)
@@ -365,8 +374,6 @@ async def warn(ctx, member: discord.Member, *, reason=None):
             await ctx.send(embed=embed)
 
 
-
-
 @client.command(pass_context=True)
 async def ban(ctx, member: discord.Member, *, reason=None):
     admin = ctx.message.author.guild_permissions.administrator
@@ -405,10 +412,14 @@ async def ban(ctx, member: discord.Member, *, reason=None):
                                   description="Bot doesn't have correct permissions, or bot can't ban this user.",
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
+
+
 ##time ban
 now = datetime.now()
+
+
 @client.command(pass_context=True)
-async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
+async def timeban(ctx, member: discord.Member, time=None, *, reason=None, ):
     if reason == None:
         await ctx.send("you must enter a reason to ban.")
     if time == None:
@@ -421,7 +432,7 @@ async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
                     colour=discord.Color.red()
                 )
                 embed.add_field(name="BANNED",
-                                #timemsg = time.strftime('%H:%M:%S', time)
+                                # timemsg = time.strftime('%H:%M:%S', time)
                                 value=f'You have been temporarily banned from `` {ctx.guild.name} `` by `` {ctx.message.author} `` for `` {reason}. You will be unbanned in {time} ``',
                                 inline=False)
                 await member.send(embed=embed)
@@ -454,40 +465,42 @@ async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
                 print(f"{author} just unbanned {member} for {reason}")
                 await ctx.guild.unban(member)
 
-           ### 
+        ###
 
-            #    await ctx.send(embed=embed)
-            #    author = ctx.message.author
-             #   channel = client.get_channel(admin_actions_log_channel_id)
-            #    await channel.send(f"{author} just banned {member} for {reason}")
-            #    await asyncio.sleep(int(time))
-            #    print(f"{author} just unbanned {member} for {reason}")
-            #    await ctx.guild.unban(member)
-                #embed = discord.Embed(title="Permission Denied.",
-                #                      description="You don't have permission to use this command.",
-                #                      color=discord.Color.red())
-                #await ctx.send(embed=embed)
+        #    await ctx.send(embed=embed)
+        #    author = ctx.message.author
+        #   channel = client.get_channel(admin_actions_log_channel_id)
+        #    await channel.send(f"{author} just banned {member} for {reason}")
+        #    await asyncio.sleep(int(time))
+        #    print(f"{author} just unbanned {member} for {reason}")
+        #    await ctx.guild.unban(member)
+        # embed = discord.Embed(title="Permission Denied.",
+        #                      description="You don't have permission to use this command.",
+        #                      color=discord.Color.red())
+        # await ctx.send(embed=embed)
         except:
             embed = discord.Embed(title="Permission Denied.",
-                                description="Bot doesn't have correct permissions, or bot can't ban this user.",
-                                color=discord.Color.red())
+                                  description="Bot doesn't have correct permissions, or bot can't ban this user.",
+                                  color=discord.Color.red())
+
+
 #            if "m" in time:
 #                print("inital time: " + time)
 #               bruhstr = time.replace("m", "")
- #               await ctx.send(embed=embed)
-  #              author = ctx.message.author
-   #             channel = client.get_channel(admin_actions_log_channel_id)
-    #            await channel.send(f"{author} just banned {member} for {reason}")
-     #           await asyncio.sleep(int(bruhstr) * 60)
-      #          print(f"{author} just unbanned {member} for {reason}")
-       #         await ctx.guild.unban(member)
-        #        print(time + "is up")
-            #await asyncio.sleep(time)
-            #print("unbanned")
-        #    await ctx.send(embed=embed)
+#               await ctx.send(embed=embed)
+#              author = ctx.message.author
+#             channel = client.get_channel(admin_actions_log_channel_id)
+#            await channel.send(f"{author} just banned {member} for {reason}")
+#           await asyncio.sleep(int(bruhstr) * 60)
+#          print(f"{author} just unbanned {member} for {reason}")
+#         await ctx.guild.unban(member)
+#        print(time + "is up")
+# await asyncio.sleep(time)
+# print("unbanned")
+#    await ctx.send(embed=embed)
 
 @client.command(pass_context=True)
-async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, reason=None):
+async def mute(ctx, role: discord.Role, member: discord.Member, time=None, *, reason=None):
     role = discord.utils.get(member.guild.roles, name="muted")
     if reason == None:
         await ctx.send("you must enter a reason to mute.")
@@ -501,7 +514,7 @@ async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, 
                     colour=discord.Color.red()
                 )
                 embed.add_field(name="MUTED",
-                                #timemsg = time.strftime('%H:%M:%S', time)
+                                # timemsg = time.strftime('%H:%M:%S', time)
                                 value=f'You have been temporarily muted from `` {ctx.guild.name} `` by `` {ctx.message.author} `` for `` {reason}. You will be unmuted in {time} ``',
                                 inline=False)
                 await member.send(embed=embed)
@@ -534,23 +547,23 @@ async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, 
                 print(f"{author} just unbanned {member} for {reason}")
                 await user.remove_roles(member)
 
-           ### 
+        ###
 
-            #    await ctx.send(embed=embed)
-            #    author = ctx.message.author
-             #   channel = client.get_channel(admin_actions_log_channel_id)
-            #    await channel.send(f"{author} just banned {member} for {reason}")
-            #    await asyncio.sleep(int(time))
-            #    print(f"{author} just unbanned {member} for {reason}")
-            #    await ctx.guild.unban(member)
-                #embed = discord.Embed(title="Permission Denied.",
-                #                      description="You don't have permission to use this command.",
-                #                      color=discord.Color.red())
-                #await ctx.send(embed=embed)
+        #    await ctx.send(embed=embed)
+        #    author = ctx.message.author
+        #   channel = client.get_channel(admin_actions_log_channel_id)
+        #    await channel.send(f"{author} just banned {member} for {reason}")
+        #    await asyncio.sleep(int(time))
+        #    print(f"{author} just unbanned {member} for {reason}")
+        #    await ctx.guild.unban(member)
+        # embed = discord.Embed(title="Permission Denied.",
+        #                      description="You don't have permission to use this command.",
+        #                      color=discord.Color.red())
+        # await ctx.send(embed=embed)
         except:
             embed = discord.Embed(title="Permission Denied.",
-                                description="Bot doesn't have correct permissions, or bot can't ban this user.",
-                                color=discord.Color.red())
+                                  description="Bot doesn't have correct permissions, or bot can't ban this user.",
+                                  color=discord.Color.red())
 
 
 @client.command(pass_context=True)
@@ -576,7 +589,7 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 
                 await ctx.send(embed=embed)
                 author = ctx.message.author
-                channel =client.get_channel(admin_actions_log_channel_id)
+                channel = client.get_channel(admin_actions_log_channel_id)
                 await channel.send(f"{author} just kicked {member} for {reason}")
             else:
                 embed = discord.Embed(title="Permission Denied.",
@@ -588,6 +601,25 @@ async def kick(ctx, member: discord.Member, *, reason=None):
                                   description="Bot doesn't have correct permissions, or bot can't kick this user.",
                                   color=discord.Color.red())
             await ctx.send(embed=embed)
+
+
+########################################################################################################################
+
+def gettime(sec):
+    sec = timedelta(seconds=round(sec))
+    d = datetime(1, 1, 1) + sec
+
+    print("DAYS:HOURS:MINS:SEC")
+    print("%d Days, %d Hours, %d Minutes, %d Seconds" % (d.day-1, d.hour, d.minute, d.second))
+    return "%d Days, %d Hours, %d Minutes, %d Seconds" % (d.day-1, d.hour, d.minute, d.second)
+
+@client.command()
+async def uptime(ctx):
+    upt2 = time.perf_counter()
+    time_change = round((upt2-upt1)*1000)
+    await ctx.send("Uptime: '{}'.".format(gettime(time_change/1000)))
+
+
 
 
 # @client.command()
@@ -630,7 +662,7 @@ async def feet(ctx):
         embed = discord.Embed(
             title='feet doe :flushed:',
             description='',
-            colour=discord.Colour.from_rgb(r, g ,b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     feet = nekos.img("feet")
 
@@ -655,7 +687,7 @@ async def yuri(ctx):
         embed = discord.Embed(
             title='yuri doe :flushed:',
             description='',
-            colour=discord.Colour.from_rgb(r, g ,b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     yur1 = nekos.img("yuri")
 
@@ -681,7 +713,7 @@ async def trap(ctx):
         embed = discord.Embed(
             title='traps are gay',
             description='',
-            colour=discord.Colour.from_rgb(r , g, b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     trap = nekos.img("trap")
 
@@ -733,7 +765,7 @@ async def hololewd(ctx):
         embed = discord.Embed(
             title='hololewd doe :flushed:',
             description='',
-            colour=discord.Colour.from_rgb(r , g, b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     hololewd = nekos.img("hololewd")
 
@@ -757,7 +789,7 @@ async def lewdkemo(ctx):
         embed = discord.Embed(
             title='lewdkemo doe :flushed:',
             description='',
-            colour=discord.Colour.from_rgb(r, g ,b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     lewdkemo = nekos.img("lewdkemo")
 
@@ -782,7 +814,7 @@ async def solo_gif(ctx):
         embed = discord.Embed(
             title=':flushed:',
             description='',
-            colour=discord.Colour.from_rgb(r, g ,b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     solog = nekos.img("solog")
 
@@ -807,7 +839,7 @@ async def feet_gif(ctx):
         embed = discord.Embed(
             title='feet :flushed:',
             description='',
-            colour=discord.Colour.from_rgb(r, g ,b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     feetg = nekos.img("feetg")
 
@@ -832,7 +864,7 @@ async def cum(ctx):
         embed = discord.Embed(
             title='cum :flushed:',
             description='',
-            colour=discord.Colour.from_rgb(r, g ,b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     cum = nekos.img("cum")
 
@@ -857,7 +889,7 @@ async def erokemo(ctx):
         embed = discord.Embed(
             title='erokemo :flushed:',
             description='',
-            colour=discord.Colour.from_rgb(r, g ,b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     erokemo = nekos.img("erokemo")
 
@@ -953,7 +985,7 @@ async def neko_gif(ctx):
     embed = discord.Embed(
         title='ngif :flushed:',
         description='',
-        colour=discord.Colour.from_rgb(r, g ,b)
+        colour=discord.Colour.from_rgb(r, g, b)
     )
     ngif = nekos.img("ngif")
 
@@ -1208,7 +1240,7 @@ async def kemonomimi(ctx):
         embed = discord.Embed(
             title=' :flushed:',
             description='',
-            colour=discord.Colour.from_rgb(r, g ,b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     kemonomimi = nekos.img("kemonomimi")
 
@@ -1229,7 +1261,7 @@ async def gasm(ctx, member: discord.Member, *, reason=""):
     embed = discord.Embed(
         title=f"{ctx.message.author} is in awe with {member.name} {reason}",
         description='',
-        colour=discord.Colour.from_rgb(r, g ,b)
+        colour=discord.Colour.from_rgb(r, g, b)
     )
     gasm = nekos.img("gasm")
 
@@ -1254,7 +1286,7 @@ async def nsfw_avatar(ctx):
         embed = discord.Embed(
             title=' :flushed:',
             description='',
-            colour=discord.Colour.from_rgb(r, g ,b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     nsfw_avatar = nekos.img("nsfw_avatar")
 
@@ -1299,7 +1331,7 @@ async def anal(ctx):
         embed = discord.Embed(
             title=' :flushed:',
             description='',
-            colour=discord.Colour.from_rgb(r, g ,b)
+            colour=discord.Colour.from_rgb(r, g, b)
         )
     anal = nekos.img("anal")
 
@@ -1670,6 +1702,7 @@ async def contribute(ctx):
     print(
         Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !neko result: {neko}   time:{round(client.latency * 1000)}ms")
 
+
 @client.command()
 async def wordsfromgod(ctx):
     r = random.randint(0, 255)
@@ -1682,7 +1715,6 @@ async def wordsfromgod(ctx):
     wordy = response.content.decode()
     bruh = wordy.replace(",", " ")
 
-
     embed = discord.Embed(
         colour=discord.Color.from_rgb(r, g, b)
     )
@@ -1691,14 +1723,12 @@ async def wordsfromgod(ctx):
     await ctx.send(embed=embed)
 
 
-
 @client.command()
 async def coronavirus(ctx, reason="None"):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
     author = ctx.message.author
-
 
     embed = discord.Embed(
         colour=discord.Color.from_rgb(r, g, b)
@@ -1713,27 +1743,28 @@ async def coronavirus(ctx, reason="None"):
     embed.add_field(value="died today:", name=r.json()['data'][0]['deaths'], inline=False)
     embed.add_field(value="active:", name=r.json()['data'][0]['todayDeaths'], inline=False)
     embed.add_field(value="critical condition:", name=r.json()['data'][0]['active'], inline=False)
-    world = "-=worldwide=- cases:", r.json()['worldStats']['cases'], " cases today: ", r.json()['worldStats']['todayCases'] , " deaths: ", r.json()['worldStats']['deaths'], " died today", r.json()['worldStats']['todayDeaths'], " recovered: ", r.json()['worldStats']['recovered'], " critical: ", r.json()['worldStats']['critical'], " cases per one million: ", r.json()['worldStats']['casesPerOneMillion']
+    world = "-=worldwide=- cases:", r.json()['worldStats']['cases'], " cases today: ", r.json()['worldStats'][
+        'todayCases'], " deaths: ", r.json()['worldStats']['deaths'], " died today", r.json()['worldStats'][
+                'todayDeaths'], " recovered: ", r.json()['worldStats']['recovered'], " critical: ", \
+            r.json()['worldStats']['critical'], " cases per one million: ", r.json()['worldStats']['casesPerOneMillion']
     embed.add_field(value=world, name=r.json()['data'][0]['critical'], inline=False)
     embed.set_author(name=r.json()['data'][0]['country'], icon_url=r.json()['data'][0]['countryInfo']['flag'])
     await ctx.send(embed=embed)
 
 
-
-#this command takes in a string and "owoifys" it
+# this command takes in a string and "owoifys" it
 @client.command()
-async def owoify(ctx,*, reason=None):
+async def owoify(ctx, *, reason=None):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
     author = ctx.message.author
 
-
     embed = discord.Embed(
         colour=discord.Color.from_rgb(r, g, b)
     )
     text = nekos.owoify(reason)
-    #print(text)
+    # print(text)
     embed.add_field(name=text[0:256], value='‎', inline=False)
     await ctx.send(embed=embed)
 
@@ -1741,7 +1772,7 @@ async def owoify(ctx,*, reason=None):
 # dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
 client.run(token)
 
-#br
+# br
 # this is the animation that gets played in case of a crash, error, dyno error etc. if you are running this from windows, i recommend replacing "clear" with "cls" to avoid a visual bug, reminding you that the clear command is unix like only. the t == 3 LOC means the amount of times the animation will repeat before terminating the application.
 t = 0
 while t != 10:
@@ -1763,7 +1794,6 @@ while t != 10:
     print("died.")
     time.sleep(1)
     os.system("clear")
-    t+= 1
-    if(t == 3):
+    t += 1
+    if (t == 3):
         exit()
-
