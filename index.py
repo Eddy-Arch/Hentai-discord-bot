@@ -196,6 +196,12 @@ async def help_admin(ctx):
                      value='get the github repository link, to which you can \
                      contribute if you choose to do so. (please do)',
                      inline=False)
+
+    embed4.add_field(name="+mute",
+                     value='usage: +mute [mute rolename] @user [time can be \
+                     represented like 1m ( for one minute) or 1h \
+                     (for one hour)] [reason]',
+                     inline=False)
     await ctx.author.send(embed=embed4)
 
 @client.command()
@@ -467,7 +473,7 @@ async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, 
         try:
             if ctx.message.author.guild_permissions.administrator or ctx.message.author.guild_permissions.ban_members:
                 message = f"You have been muted in {ctx.guild.name} by {ctx.message.author} for {reason}"
-                unmute_message=f'You hvae been unmuted in `` {ctx.guild.name} ``. You were muted by `` {ctx.message.author} `` for `` {reason}. You were muted for {time} ``',
+                unmute_message=f'You have been unmuted in `` {ctx.guild.name} ``. You were muted by `` {ctx.message.author} `` for `` {reason}. You were muted for {time} ``',
                 embed = discord.Embed(
                     colour=discord.Color.red()
                 )
