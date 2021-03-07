@@ -252,7 +252,7 @@ async def info(ctx):
 
 @client.event
 async def on_message(message):
-    with io.open("bruhgaming78.txt", "a", encoding="utf-8") as f:
+    with io.open("chatlogs.txt", "a", encoding="utf-8") as f:
         f.write(
             "[{}] | [{}] | [{}] @ {}: {}\n".format(message.guild,
                                                    message.channel,
@@ -431,58 +431,30 @@ async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
 
             if "m" in time:
                 print("inital time: " + time)
-                bruhstr = time.replace("m", "")
+                m_bantime = time.replace("m", "")
                 await ctx.send(embed=embed)
                 author = ctx.message.author
                 channel = client.get_channel(admin_actions_log_channel_id)
                 await channel.send(f"{author} just banned {member} for {reason}")
-                await asyncio.sleep(int(bruhstr) * 60)
+                await asyncio.sleep(int(m_bantime) * 60)
                 print(f"{author} just unbanned {member} for {reason}")
                 await ctx.guild.unban(member)
                 print(time + "is up")
             ###
             if "h" in time:
                 print("inital time: " + time)
-                bruhstr = time.replace("h", "")
+                h_bantime = time.replace("h", "")
                 await ctx.send(embed=embed)
                 author = ctx.message.author
                 channel = client.get_channel(admin_actions_log_channel_id)
                 await channel.send(f"{author} just banned {member} for {reason}")
-                await asyncio.sleep(int(bruhstr) * 3600)
+                await asyncio.sleep(int(h_bantime) * 3600)
                 print(f"{author} just unbanned {member} for {reason}")
                 await ctx.guild.unban(member)
-
-           ### 
-
-            #    await ctx.send(embed=embed)
-            #    author = ctx.message.author
-             #   channel = client.get_channel(admin_actions_log_channel_id)
-            #    await channel.send(f"{author} just banned {member} for {reason}")
-            #    await asyncio.sleep(int(time))
-            #    print(f"{author} just unbanned {member} for {reason}")
-            #    await ctx.guild.unban(member)
-                #embed = discord.Embed(title="Permission Denied.",
-                #                      description="You don't have permission to use this command.",
-                #                      color=discord.Color.red())
-                #await ctx.send(embed=embed)
         except:
             embed = discord.Embed(title="Permission Denied.",
                                 description="Bot doesn't have correct permissions, or bot can't ban this user.",
                                 color=discord.Color.red())
-#            if "m" in time:
-#                print("inital time: " + time)
-#               bruhstr = time.replace("m", "")
- #               await ctx.send(embed=embed)
-  #              author = ctx.message.author
-   #             channel = client.get_channel(admin_actions_log_channel_id)
-    #            await channel.send(f"{author} just banned {member} for {reason}")
-     #           await asyncio.sleep(int(bruhstr) * 60)
-      #          print(f"{author} just unbanned {member} for {reason}")
-       #         await ctx.guild.unban(member)
-        #        print(time + "is up")
-            #await asyncio.sleep(time)
-            #print("unbanned")
-        #    await ctx.send(embed=embed)
 
 @client.command(pass_context=True)
 async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, reason=None):
@@ -511,40 +483,27 @@ async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, 
 
             if "m" in time:
                 print("inital time: " + time)
-                bruhstr = time.replace("m", "")
+                m_mutetime = time.replace("m", "")
                 await ctx.send(embed=embed)
                 author = ctx.message.author
                 channel = client.get_channel(admin_actions_log_channel_id)
                 await channel.send(f"{author} just muted {member} for {reason}")
-                await asyncio.sleep(int(bruhstr) * 60)
+                await asyncio.sleep(int(m_mutetime) * 60)
                 print(f"{author} just unbanned {member} for {reason}")
                 await member.remove_roles(role)
                 print(time + "is up")
             ###
             if "h" in time:
                 print("inital time: " + time)
-                bruhstr = time.replace("h", "")
+                h_mutetime = time.replace("h", "")
                 await ctx.send(embed=embed)
                 author = ctx.message.author
                 channel = client.get_channel(admin_actions_log_channel_id)
                 await channel.send(f"{author} just muted {member} for {reason}")
-                await asyncio.sleep(int(bruhstr) * 3600)
+                await asyncio.sleep(int(h_mutetime) * 3600)
                 print(f"{author} just unbanned {member} for {reason}")
                 await user.remove_roles(member)
 
-           ### 
-
-            #    await ctx.send(embed=embed)
-            #    author = ctx.message.author
-             #   channel = client.get_channel(admin_actions_log_channel_id)
-            #    await channel.send(f"{author} just banned {member} for {reason}")
-            #    await asyncio.sleep(int(time))
-            #    print(f"{author} just unbanned {member} for {reason}")
-            #    await ctx.guild.unban(member)
-                #embed = discord.Embed(title="Permission Denied.",
-                #                      description="You don't have permission to use this command.",
-                #                      color=discord.Color.red())
-                #await ctx.send(embed=embed)
         except:
             embed = discord.Embed(title="Permission Denied.",
                                 description="Bot doesn't have correct permissions, or bot can't ban this user.",
