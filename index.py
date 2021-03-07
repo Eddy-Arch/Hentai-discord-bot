@@ -467,6 +467,7 @@ async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, 
         try:
             if ctx.message.author.guild_permissions.administrator or ctx.message.author.guild_permissions.ban_members:
                 message = f"You have been muted in {ctx.guild.name} by {ctx.message.author} for {reason}"
+                unmute_message=f'You hvae been unmuted in `` {ctx.guild.name} ``. You were muted by `` {ctx.message.author} `` for `` {reason}. You were muted for {time} ``',
                 embed = discord.Embed(
                     colour=discord.Color.red()
                 )
@@ -476,10 +477,6 @@ async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, 
                                 inline=False)
                 await member.send(embed=embed)
                 await member.add_roles(role)
-                embed = discord.Embed(title="User was muted for {}".format(reason),
-                                      description="**{}** has  been muted!".format(member),
-                                      color=discord.Color.green())
-                embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 
             if "m" in time:
                 print("inital time: " + time)
@@ -489,9 +486,17 @@ async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, 
                 channel = client.get_channel(admin_actions_log_channel_id)
                 await channel.send(f"{author} just muted {member} for {reason}")
                 await asyncio.sleep(int(m_mutetime) * 60)
-                print(f"{author} just unbanned {member} for {reason}")
+                print(f"{author} just muted {member} for {reason}")
                 await member.remove_roles(role)
                 print(time + "is up")
+                unmute_embed = discord.Embed(
+                    colour=discord.Color.red()
+                )
+                unmute_embed.add_field(name="MUTED",
+                                #timemsg = time.strftime('%H:%M:%S', time)
+                                value=unmute_message
+                                inline=False)
+                await member.send(embed=unmute_embed)
             ###
             if "h" in time:
                 print("inital time: " + time)
