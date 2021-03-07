@@ -477,6 +477,10 @@ async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, 
                                 inline=False)
                 await member.send(embed=embed)
                 await member.add_roles(role)
+                embed = discord.Embed(title="User was muted for {}".format(reason),
+                                      description="**{}** has  been muted!".format(member),
+                                      color=discord.Color.green())
+                embed.set_author(name=ctx.message.author, icon_url=ctx.message.author.avatar_url)
 
             if "m" in time:
                 print("inital time: " + time)
