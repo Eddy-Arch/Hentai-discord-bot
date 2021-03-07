@@ -494,7 +494,7 @@ async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, 
                 )
                 unmute_embed.add_field(name="MUTED",
                                 #timemsg = time.strftime('%H:%M:%S', time)
-                                value=unmute_message
+                                value=unmute_message,
                                 inline=False)
                 await member.send(embed=unmute_embed)
             ###
