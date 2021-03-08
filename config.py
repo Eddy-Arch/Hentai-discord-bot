@@ -6,6 +6,7 @@ admin_actions_log_channel_id = 741923499542839330
 # executed
 general_actions_log_channel_id = 741923499542839330
 # the name of the role the user should get once theyve been verified
+welcome_message_channel_name = "general"
 verify_role_name = 'Verified'
 # the prefix to be used
 conf_bot_prefix = "+"

@@ -297,7 +297,7 @@ async def on_member_join(member):
         please type ```+verify``` in the #verify-me channel',
         colour=discord.Colour.blurple()
     )
-    channel = discord.utils.get(member.guild.channels, name="┊❀log")
+    channel = discord.utils.get(member.guild.channels, name=welcome_message_channel_name)
     bruh = member.avatar_url
 
     embed.set_image(url=bruh)
