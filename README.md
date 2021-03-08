@@ -12,6 +12,12 @@ and it logs everything said in  chat into a txt file.
 ### currently, there is one instance of the bot,
 which you can add to your server using this link.
 - [Invite the bot to your server](https://discordapp.com/oauth2/authorize?client_id=745226000471687251&scope=bot&permissions=8)
+### Disclaimer:
+The bot is intended to be hosted individually for one server.
+The bot by design also logs all messages sent in a discord server.
+I highly recommend you start your own instance, otherwise, just add the current
+one.
+
 
 <!---
 ## website
