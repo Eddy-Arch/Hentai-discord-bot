@@ -1631,7 +1631,7 @@ async def contribute(ctx):
     b = random.randint(0, 255)
     embed = discord.Embed(
         title='contributon',
-        description='contribution to the project is always welcome, feel free to contribute, edit, ,clean up, document, and improve the source code at: https://github.com/Eddy-Arch/NSFW_Discordb_bot',
+        description='contribution to the project is always welcome, feel free to contribute, edit, ,clean up, document, and improve the source code at: https://github.com/Eddy-Arch/hentai-discord-bot',
         colour=discord.Colour.from_rgb(r, g, b)
     )
     neko = nekos.img("neko")
