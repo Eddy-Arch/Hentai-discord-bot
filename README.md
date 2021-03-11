@@ -17,6 +17,8 @@ The bot is intended to be hosted individually for one server.
 The bot by design also logs all messages sent in a discord server.
 I highly recommend you start your own instance, otherwise, just add the current
 one.
+If you would like to submit an instace, add it to the INSTANCES.md file,
+and then open a pull request about it.
 
 
 <!---
