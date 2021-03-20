@@ -318,7 +318,7 @@ async def ping(ctx):
 # purge command
 @client.command(pass_context=True)
 async def purge(ctx, amount=5):
-    if ctx.message.author.guild_permissions.administrator or ctx.message.author.guild_permissions.ban_members:
+    if ctx.message.author.guild_permissions.administrator or ctx.message.author.guild_permissions.ban_members and amount < 1000:
         await ctx.channel.purge(limit=amount)
         await ctx.author.send(f"purged {amount} messages.")
         channel = client.get_channel(general_actions_log_channel_id)
