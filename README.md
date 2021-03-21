@@ -1,6 +1,5 @@
 # Hentai discord bot 
-Welcome to my first publicaly available discord bot source code page!
- 
+This bot is a cooperative effort between Phi and Eddy :). 
 ## functionality 
  
 it can do some social stuff,
