@@ -44,11 +44,11 @@ and then open a pull request about it.
 ## install guide:
 ### to install this on baremetal/server/selfhost, run the following commands: 
 ```bash
-git clone https://github.com/Eddy-Arch/Anime-discord-bot.git
+git clone https://github.com/Eddy-Arch/hentai-discord-bot.git
 ```
 
 ```bash
-cd Anime-discord-bot
+cd hentai-discord-bot
 ```
 
 ```bash
