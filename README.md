@@ -76,10 +76,10 @@ nohup python3 index.py
 
 ## FAQ
 ### invalid token:
-#### the bot needs a working token, to get one, create a developer account 
-#### on discord and insert the token in config.py
+the bot needs a working token, to get one, create a developer account 
+on discord and insert the token in config.py
 ### discord.py error
-#### you need to update discord.py. you can do this by running
+you need to update discord.py. you can do this by running
 ```pip3 install discord.py```
 
 ## Donate
