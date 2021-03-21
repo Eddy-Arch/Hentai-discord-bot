@@ -81,3 +81,7 @@ nohup python3 index.py
 ### discord.py error
 #### you need to update discord.py. you can do this by running
 ```pip3 install discord.py```
+
+## Donate
+
+- [Donate to the project](https://github.com/Eddy-Arch/Hentai-discord-bot/blob/master/CREDITS.md)
