@@ -59,11 +59,11 @@ nohup python3 index.py
 ```
 
 ### heroku install
-#### more advanced users may wish to install the bot on heroku, and other
-#### git using hosting services.
-#### this repo contains all the files necessary for you to be able to just
-#### commit the bot to your heroku server, and it should work out of the box.
-#### (Procfile, requirements.txt)
+more advanced users may wish to install the bot on heroku, and other
+git using hosting services.
+this repo contains all the files necessary for you to be able to just
+commit the bot to your heroku server, and it should work out of the box.
+(Procfile, requirements.txt)
 ## Main idea behind the bot
 ### most bots on discord nowadays are:
 - overly complex
