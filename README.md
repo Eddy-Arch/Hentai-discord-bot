@@ -1,3 +1,10 @@
+# Whats changed?
+there are no admin commands, no welcome commands, all of the unecessary stuff
+has been redacted. This version of the bot is what most will end up using.
+This branch was developed using anonymous data that was gatherd concearning
+the way users ineract with the bot, and using this data I removed the features
+that our users do not use, or have other bots perform for them.
+TLDR: removed unecessary junk most users dont need.
 # Hentai discord bot 
 This bot is a cooperative effort between Phi and Eddy :). 
 ## functionality 
