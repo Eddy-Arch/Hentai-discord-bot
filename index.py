@@ -238,23 +238,6 @@ async def verify(ctx, * role: discord.Role):
   await user.add_roles(role)
   await ctx.send("you've been verified ")
 
-@client.command()
-async def info(ctx):
-    author = ctx.message.author
-
-    embed = discord.Embed(
-        colour=discord.Color.purple()
-    )
-    embed.set_author(name="Info")
-    embed.add_field(name="Creator:", value='Eddy-Gentoo#1169', inline=False)
-    embed.add_field(name="Source code", value='https://github.com/Eddy-Arch/N\
-                    SFW_Discordb_bot/', inline=False)
-    embed.add_field(name="Contact", value='you can contact me via discord or \
-                    email', inline=False)
-    embed.add_field(name="Personal Website", value='https://eddster.xyz',
-                    inline=False)
-    await ctx.send(embed=embed)
-
 
 @client.event
 async def on_message(message):
