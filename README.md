@@ -2,6 +2,7 @@
 This is the branch of the bot with no nsfw features with it.
 Im not sure why you would want a Hentai discord bot with no hentai, but,
 you do have that liberty.
+=======
 # Hentai discord bot 
 This bot is a cooperative effort between Phi and Eddy :). 
 ## functionality 
@@ -88,7 +89,7 @@ you need to update discord.py. you can do this by running
 
 ## Donate
 
-- [Donate to the project](https://github.com/Eddy-Arch/Hentai-discord-bot/blob/master/CREDITS.md)
+- [Donate to the project](https://github.com/Eddy-Arch/Hentai-discord-bot/blob/master/docs/CREDITS.md)
 ## Versions
 Currently, new branches are being developed without admin/social/nsfw options.
 Check out the branches page for more info.
