@@ -32,95 +32,59 @@ client.remove_command("help")
 @client.command()
 async def help(ctx):
     author = ctx.message.author
-
-
-    helpembed= discord.Embed(
-        colour=discord.Color.green()
-    )
+    helpembed= discord.Embed(colour=discord.Color.green())
     helpembed.set_author(name="Options")
     helpembed.add_field(name="+help_nsfw", value = "available nsfw commands")
-    helpembed.add_field(name="+help_more_nsfw", value = "more available nsfw \
-                        commands")
-    helpembed.add_field(name="+help_social", value = "available social comm\
-                        ands")
-    helpembed.add_field(name="+help_admin", value = "available admin \
-                        commands")
-    helpembed.add_field(name="+help_misc", value = "available misc \
-                        commands")
-
-
+    helpembed.add_field(name="+help_more_nsfw", value = "more available nsfw commands")
+    helpembed.add_field(name="+help_social", value = "available social commands")
+    helpembed.add_field(name="+help_admin", value = "available admin commands")
+    helpembed.add_field(name="+help_misc", value = "available misc commands")
     await ctx.author.send(embed=helpembed)
-
 
 ###help commands
 @client.command()
 async def help_nsfw(ctx):
     author = ctx.message.author
-    embed = discord.Embed(
-        colour=discord.Color.blurple()
-    )
-
-
-
+    embed = discord.Embed(colour=discord.Color.blurple())
     embed.set_author(name="Available NSFW commands")
     embed.add_field(name="+feet", value='NSFW feet pics', inline=False)
     embed.add_field(name="+yuri", value='NSFW yuri pics', inline=False)
     embed.add_field(name="+trap", value='NSFW trap pics', inline=False)
-    embed.add_field(name="+futanari",
-                    value='NSFW futanari pics', inline=False)
-    embed.add_field(name="+hololewd",
-                    value='NSFW hololewd pics', inline=False)
-    embed.add_field(name="+lewdkemo",
-                    value='NSFW lewdkemo pics', inline=False)
-    embed.add_field(name="+solo_gif",
-                    value='NSFW solo gifs', inline=False)
-    embed.add_field(name="+feet_gif",
-                    value='NSFW feet gif', inline=False)
-    embed.add_field(name="+cum",
-                    value='NSFW cum on catgirls pics', inline=False)
+    embed.add_field(name="+futanari",value='NSFW futanari pics', inline=False)
+    embed.add_field(name="+hololewd",value='NSFW hololewd pics', inline=False)
+    embed.add_field(name="+lewdkemo",value='NSFW lewdkemo pics', inline=False)
+    embed.add_field(name="+solo_gif",value='NSFW solo gifs', inline=False)
+    embed.add_field(name="+feet_gif",value='NSFW feet gif', inline=False)
+    embed.add_field(name="+cum",value='NSFW cum on catgirls pics', inline=False)
     embed.add_field(name="+erokemo", value='NSFW erokemo pics', inline=False)
     embed.add_field(name="+les", value='NSFW les pics', inline=False)
     embed.add_field(name="+wallpaper", value='cute wallpapers', inline=False)
     embed.add_field(name="+lewdk", value='NSFW lewdk pics', inline=False)
-    embed.add_field(name="+neko_gif",
-                    value='cute neko pics :flushed:', inline=False)
+    embed.add_field(name="+neko_gif",value='cute neko pics :flushed:', inline=False)
     embed.add_field(name="+meow", value='cute cat pics', inline=False)
-    embed.add_field(name="+lewd",
-                    value='lewd catgirls', inline=False)
-    embed.add_field(name="+gegc",
-                    value='genetically engineerd catgirl memes', inline=False)
-    embed.add_field(name="+eroyuri",
-                    value='NSFW eroyuri', inline=False)
-    embed.add_field(name="+eron",
-                    value='NSFW eron', inline=False)
-    embed.add_field(name="+bj",
-                    value='NSFW bj', inline=False)
-    embed.add_field(name="+nsfw_neko_gif",
-                    value='NSFW neko gif', inline=False)
-    embed.add_field(name="+solo",
-                    value='NSFW solo pic', inline=False)
-    embed.add_field(name="+kemonomimi",
-                    value="kemonomimi", inline =False)
+    embed.add_field(name="+lewd",value='lewd catgirls', inline=False)
+    embed.add_field(name="+gegc",value='genetically engineerd catgirl memes', inline=False)
+    embed.add_field(name="+eroyuri",value='NSFW eroyuri', inline=False)
+    embed.add_field(name="+eron",value='NSFW eron', inline=False)
+    embed.add_field(name="+bj",value='NSFW bj', inline=False)
+    embed.add_field(name="+nsfw_neko_gif",value='NSFW neko gif', inline=False)
+    embed.add_field(name="+solo",value='NSFW solo pic', inline=False)
+    embed.add_field(name="+kemonomimi",value="kemonomimi", inline =False)
     await ctx.author.send(embed=embed)
+
 @client.command()
 async def help_more_nsfw(ctx):
     author = ctx.message.author
-    embed2 = discord.Embed(
-        colour=discord.Color.blurple()
-    )
+    embed2 = discord.Embed(colour=discord.Color.blurple())
     embed2.set_author(name="More NSFW")
-    embed2.add_field(name="+nsfw_avatar",
-                     value='NSFW avatar pic for u horny virgins',
-                     inline=False)
+    embed2.add_field(name="+nsfw_avatar", value='NSFW avatar pic for u horny virgins',inline=False)
     embed2.add_field(name="+anal", value='NSFW anal pic', inline=False)
     embed2.add_field(name="+hentai", value='NSFW hentai pic', inline=False)
-    embed2.add_field(name="+avatar",
-                     value='generates a dope avatar pic', inline=False)
+    embed2.add_field(name="+avatar",value='generates a dope avatar pic', inline=False)
     embed2.add_field(name="+erofeet", value='NSFW erofeet', inline=False)
     embed2.add_field(name="+pussy", value='NSFW pussy', inline=False)
     embed2.add_field(name="+tits", value='NSFW tits', inline=False)
-    embed2.add_field(name="+waifu",
-                     value='waifu. self explanotory you weeb', inline=False)
+    embed2.add_field(name="+waifu",value='waifu. self explanotory you weeb', inline=False)
     embed2.add_field(name="+boobs", value='boobs', inline=False)
     embed2.add_field(name="+smallboobs", value='smallboobies ', inline=False)
     embed2.add_field(name="+fox_girl", value='fox girl pics', inline=False)
@@ -131,44 +95,26 @@ async def help_more_nsfw(ctx):
 @client.command()
 async def help_social(ctx):
     author = ctx.message.author
-
-    embed3 = discord.Embed(
-        colour=discord.Color.magenta()
-    )
+    embed3 = discord.Embed(colour=discord.Color.magenta())
     embed3.set_author(name="Social")
-
-    embed3.add_field(name="+tickle",
-                     value='usage: +tickle @user tickle tickle', inline=False)
-    embed3.add_field(name="+feed",
-                     value='usage: +feed @user eat up fatty', inline=False)
-    embed3.add_field(name="+gasm",
-                     value='usage: +gasm @user no way dude', inline=False)
-    embed3.add_field(name="+poke",
-                     value='usage: +poke @user beep', inline=False)
-    embed3.add_field(name="+slap",
-                     value='usage: +slap @user u cunt', inline=False)
-    embed3.add_field(name="+pat",
-                     value='usage: +pet @user u cutie', inline=False)
-    embed3.add_field(name="+kiss",
-                     value='usage: +kiss @user muah (no homo)', inline=False)
-    embed3.add_field(name="+spank",
-                     value='usage: +spank @user BRUH', inline=False)
-    embed3.add_field(name="+cuddle",
-                     value='usage: +cuddle @user u cutie', inline=False)
-    embed3.add_field(name="+hug",
-                     value='usage: +hug @user u cutie', inline=False)
-    embed3.add_field(name="+owoify",
-                     value='usage: "owoifys" some text', inline=False)
+    embed3.add_field(name="+tickle",value='usage: +tickle @user tickle tickle', inline=False)
+    embed3.add_field(name="+feed",value='usage: +feed @user eat up fatty', inline=False)
+    embed3.add_field(name="+gasm",value='usage: +gasm @user no way dude', inline=False)
+    embed3.add_field(name="+poke",value='usage: +poke @user beep', inline=False)
+    embed3.add_field(name="+slap",value='usage: +slap @user u cunt', inline=False)
+    embed3.add_field(name="+pat",value='usage: +pet @user u cutie', inline=False)
+    embed3.add_field(name="+kiss",value='usage: +kiss @user muah (no homo)', inline=False)
+    embed3.add_field(name="+spank",value='usage: +spank @user BRUH', inline=False)
+    embed3.add_field(name="+cuddle",value='usage: +cuddle @user u cutie', inline=False)
+    embed3.add_field(name="+hug",value='usage: +hug @user u cutie', inline=False)
+    embed3.add_field(name="+owoify",value='usage: "owoifys" some text', inline=False)
     await ctx.author.send(embed=embed3)
 
 
 @client.command()
 async def help_misc(ctx):
     author = ctx.message.author
-
-    embed5 = discord.Embed(
-        colour=discord.Color.red()
-    )
+    embed5 = discord.Embed(colour=discord.Color.red())
     embed5.set_author(name="Misc")
     embed5.add_field(name="+wordsfromgod", value='gives you a list of random \
                      words, which are the words of god. inspired by terry \
@@ -178,27 +124,13 @@ async def help_misc(ctx):
                      f the pandemic')
     await ctx.author.send(embed=embed5)
 
-
 print(
     Fore.WHITE + "[" + Fore.BLUE + '+' + Fore.WHITE + "]" + Fore.BLUE + "\
     attempting to establish connection to the client")
 
-@client.command()
-async def info(ctx):
-    author = ctx.message.author
-
-    embed = discord.Embed(
-        colour=discord.Color.purple()
-    )
-    embed.set_author(name="Info")
-    embed.add_field(name="Creator:", value='Eddy-Gentoo#1169', inline=False)
-    embed.add_field(name="Source code", value='https://github.com/Eddy-Arch/N\
-                    SFW_Discordb_bot/', inline=False)
-    embed.add_field(name="Contact", value='you can contact me via discord or \
-                    email', inline=False)
-    embed.add_field(name="Personal Website", value='https://eddster.xyz',
-                    inline=False)
-    await ctx.send(embed=embed)
+@client.event
+async def on_ready():
+    print("")
 
 
 @client.event
