@@ -37,7 +37,6 @@ async def help(ctx):
     helpembed.add_field(name="+help_nsfw", value = "available nsfw commands")
     helpembed.add_field(name="+help_more_nsfw", value = "more available nsfw commands")
     helpembed.add_field(name="+help_social", value = "available social commands")
-    helpembed.add_field(name="+help_admin", value = "available admin commands")
     helpembed.add_field(name="+help_misc", value = "available misc commands")
     await ctx.author.send(embed=helpembed)
 
