@@ -1,10 +1,3 @@
-# Whats changed?
-This is the experimental branch of the bot.
-Here is where we experment with new ideas, new pulls and merges,
-And other stuff.
-WARNING: do not expect this branch to work flawlessy, or even at all.
-For that i recommend the stable version, or any other version that suits your
-tastes, but this one.
 # Hentai discord bot 
 This bot is a cooperative effort between Phi and Eddy :). 
 ## functionality 
