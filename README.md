@@ -84,7 +84,7 @@ you need to update discord.py. you can do this by running
 
 ## Donate
 
-- [Donate to the project](https://github.com/Eddy-Arch/Hentai-discord-bot/blob/master/CREDITS.md)
+- [Donate to the project](https://github.com/Eddy-Arch/Hentai-discord-bot/docs/blob/master/CREDITS.md)
 ## Versions
 Currently, new branches are being developed without admin/social/nsfw options.
 Check out the branches page for more info.
