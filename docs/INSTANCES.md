@@ -1,3 +1,7 @@
 ## instances
-No features added
-https://discordapp.com/oauth2/authorize?client_id=745226000471687251&scope=bot&permissions=8
+#### Instance 1
+* owner: Eddy
+* repo: htttps://github.com/eddy-arch/hentai-discord-bot
+* changed features: none
+* invite: [invite](https://discordapp.com/oauth2/authorize?client_id=745226000471687251&scope=bot&permissions=8)
+* servers: 98/100 Servers
