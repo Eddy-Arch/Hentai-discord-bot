@@ -12,7 +12,7 @@ and it logs everything said in  chat into a txt file.
 which you can add to your server using this link.
 [HERE](https://github.com/Eddy-Arch/Hentai-discord-bot/blob/experimental/docs/INSTANCES.md) you can find a list of all the live instances.
 
-- [Invite the bot to your server](https://discordapp.com/oauth2/authorize?client_id=745226000471687251&scope=bot&permissions=8)
+- [Invite the bot to your server](https://github.com/Eddy-Arch/Hentai-discord-bot/blob/experimental/docs/INSTANCES.md)
 ### Disclaimer:
 The bot is intended to be hosted individually for one server.
 The bot by design also logs all messages sent in a discord server.
