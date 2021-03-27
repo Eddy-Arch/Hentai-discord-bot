@@ -17,6 +17,8 @@ and it logs everything said in  chat into a txt file.
 ## Live instances
 ### currently, there is one instance of the bot,
 which you can add to your server using this link.
+[HERE]()you can find a list of all the live instances.
+
 - [Invite the bot to your server](https://discordapp.com/oauth2/authorize?client_id=745226000471687251&scope=bot&permissions=8)
 ### Disclaimer:
 The bot is intended to be hosted individually for one server.
