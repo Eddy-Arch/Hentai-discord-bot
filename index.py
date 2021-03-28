@@ -379,7 +379,7 @@ async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
 
 @client.command(pass_context=True)
 async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, reason=None):
-    role = discord.utils.get(member.guild.roles, name="muted")
+    role = discord.utils.get(member.guild.roles, name=mute_role_name)
     if reason == None:
         await ctx.send("you must enter a reason to mute.")
     if time == None:
