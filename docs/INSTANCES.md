@@ -8,6 +8,6 @@
 #### Instance 2
 * owner: Eddy
 * repo: htttps://github.com/eddy-arch/hentai-discord-bot
-* changed features: none
+* changed features: running experimental branch
 * invite: [invite](https://discordapp.com/oauth2/authorize?client_id=825575374612070410&scope=bot&permissions=8)
 * servers: 0/100 Servers
