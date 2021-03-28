@@ -504,6 +504,7 @@ async def feet(ctx):
         author = ctx.message.author
         if not ctx.channel.is_nsfw():
             await ctx.author.send("```not an nsfw channel```")
+            await ctx.message.delete()
             sys.stderr = object
 
     except:
@@ -534,6 +535,7 @@ async def yuri(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -559,6 +561,7 @@ async def trap(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -585,6 +588,7 @@ async def futanari(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -611,6 +615,7 @@ async def hololewd(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -636,6 +641,7 @@ async def lewdkemo(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -686,6 +692,7 @@ async def feet_gif(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -711,6 +718,7 @@ async def cum(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -736,6 +744,7 @@ async def erokemo(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -761,6 +770,7 @@ async def les(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -786,6 +796,7 @@ async def wallpaper(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -812,6 +823,7 @@ async def lewdk(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -901,6 +913,7 @@ async def lewd(ctx):
         b = random.randint(0, 255)
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         embed = discord.Embed(
@@ -963,6 +976,7 @@ async def eroyuri(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -988,6 +1002,7 @@ async def eron(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -1013,6 +1028,7 @@ async def bj(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -1037,6 +1053,7 @@ async def nsfw_neko_gif(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -1062,6 +1079,7 @@ async def solo(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -1087,6 +1105,7 @@ async def kemonomimi(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -1133,6 +1152,7 @@ async def nsfw_avatar(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -1178,6 +1198,7 @@ async def anal(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -1223,6 +1244,7 @@ async def hentai(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -1268,6 +1290,7 @@ async def erofeet(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -1293,6 +1316,7 @@ async def pussy(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
@@ -1363,6 +1387,7 @@ async def boobs(ctx):
     if not ctx.channel.is_nsfw():
         author = ctx.message.author
         await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
         r = random.randint(0, 255)
