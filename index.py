@@ -20,7 +20,7 @@ from datetime import datetime
 from colorama import init
 
 init()
-# set the preifx and disable the builtin help command that comes with
+# set the prefix and disable the builtin help command that comes with
 # discord.py
 
 client = commands.Bot(command_prefix=conf_bot_prefix)
@@ -63,7 +63,7 @@ async def help_nsfw(ctx):
     embed.add_field(name="+neko_gif",value='cute neko pics :flushed:', inline=False)
     embed.add_field(name="+meow", value='cute cat pics', inline=False)
     embed.add_field(name="+lewd",value='lewd catgirls', inline=False)
-    embed.add_field(name="+gegc",value='genetically engineerd catgirl memes', inline=False)
+    embed.add_field(name="+gegc",value='genetically engineered catgirl memes', inline=False)
     embed.add_field(name="+eroyuri",value='NSFW eroyuri', inline=False)
     embed.add_field(name="+eron",value='NSFW eron', inline=False)
     embed.add_field(name="+bj",value='NSFW bj', inline=False)
@@ -84,9 +84,9 @@ async def help_more_nsfw(ctx):
     embed2.add_field(name="+erofeet", value='NSFW erofeet', inline=False)
     embed2.add_field(name="+pussy", value='NSFW pussy', inline=False)
     embed2.add_field(name="+tits", value='NSFW tits', inline=False)
-    embed2.add_field(name="+waifu",value='waifu. self explanotory you weeb', inline=False)
+    embed2.add_field(name="+waifu",value='waifu. self explanatory you weeb', inline=False)
     embed2.add_field(name="+boobs", value='boobs', inline=False)
-    embed2.add_field(name="+smallboobs", value='smallboobies ', inline=False)
+    embed2.add_field(name="+smallboobs", value='small boobies', inline=False)
     embed2.add_field(name="+fox_girl", value='fox girl pics', inline=False)
     embed2.add_field(name="+cat", value='cute kitty pics', inline=False)
     embed2.add_field(name="+neko", value='neko pics', inline=False)
@@ -117,25 +117,25 @@ async def help_admin(ctx):
     embed4.set_author(name="Moderation")
     embed4.add_field(name="+timeban",
                      value='usage: +timeban @user [reason] [time, in seconds]\
-                      (this will send them a dm notifying them that theyve \
+                      (this will send them a dm notifying them that they\'ve \
                      been temporarily banned for a reason u specify)',inline=False)
     embed4.add_field(name="+kick",
                      value='usage: +kick @user [reason] (this will send them\
-                     a dm notifying them that theyve been kicked for a reason\
+                     a dm notifying them that they\'ve been kicked for a reason\
                      u specify)',inline=False)
     embed4.add_field(name="+ban",
                      value='usage: +ban @user [reason] (this will send them\
-                     a dm notifying them that theyve been banned for a \
+                     a dm notifying them that they\'ve been banned for a \
                      reason u specify)',inline=False)
     embed4.add_field(name="+purge", value='usage: +purge <amount of messages \
                      to purge>', inline=False)
     embed4.add_field(name="+warn",
                      value='usage: +warn @user [reason] (this will send them \
-                     a dm notifying them that theyve been warned for a  \
+                     a dm notifying them that they\'ve been warned for a  \
                      reason u specify)',inline=False)
     embed4.add_field(name="+contribute",
                      value='get the github repository link, to which you can \
-                     contribute if you choose to do so. (please do)',inline=False)
+                     contribute if you choose to do so (please do)',inline=False)
     embed4.add_field(name="+mute",
                      value='usage: +mute [mute rolename] @user [time can be \
                      represented like 1m ( for one minute) or 1h \
@@ -159,16 +159,12 @@ print(
     Fore.WHITE + "[" + Fore.BLUE + '+' + Fore.WHITE + "]" + Fore.BLUE + "\
     attempting to establish connection to the client")
 
-@client.event
-async def on_ready():
-    print("")
-
 @client.command()
 async def verify(ctx, * role: discord.Role):
   user = ctx.message.author
   role = discord.utils.get(user.guild.roles, name=verify_role_name)
   await user.add_roles(role)
-  await ctx.send("you've been verified ")
+  await ctx.send("you've been verified")
 
 
 @client.event
@@ -208,7 +204,7 @@ async def on_member_join(member):
     embed = discord.Embed(
         title='Hello there!',
         description=f'thanks for joining {member}! have a good time,\
-        and dont forget to follow the rules! to be able to chat, \
+        and don\'t forget to follow the rules! to be able to chat, \
         please type ```+verify``` in the #verify-me channel',
         colour=discord.Colour.blurple()
     )
@@ -292,7 +288,7 @@ async def ban(ctx, member: discord.Member, *, reason=None):
     banperm = ctx.message.author.guild_permissions.ban_members
 
     if reason == None:
-        await ctx.send("you must enter a reason to ban.")
+        await ctx.send("you must enter a reason to ban")
     else:
         try:
             if admin or banperm:
@@ -329,7 +325,7 @@ now = datetime.now()
 @client.command(pass_context=True)
 async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
     if reason == None:
-        await ctx.send("you must enter a reason to ban.")
+        await ctx.send("you must enter a reason to ban")
     if time == None:
         await ctx.send("you must enter the time (in seconds) a user should be banned for")
     else:
@@ -381,7 +377,7 @@ async def timeban(ctx, member: discord.Member, time = None, *, reason=None, ):
 async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, reason=None):
     role = discord.utils.get(member.guild.roles, name=mute_role_name)
     if reason == None:
-        await ctx.send("you must enter a reason to mute.")
+        await ctx.send("you must enter a reason to mute")
     if time == None:
         await ctx.send("you must enter the time (in seconds) a user should be muted for")
     else:
@@ -443,7 +439,7 @@ async def mute(ctx, role: discord.Role, member: discord.Member, time = None, *, 
 @client.command(pass_context=True)
 async def kick(ctx, member: discord.Member, *, reason=None):
     if reason == None:
-        await ctx.send("you must enter a reason to kick.")
+        await ctx.send("you must enter a reason to kick")
     else:
         try:
             if ctx.message.author.guild_permissions.administrator or ctx.message.author.guild_permissions.ban_members:
@@ -582,7 +578,7 @@ async def trap(ctx):
         Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !trap result: {trap}   time:{round(client.latency * 1000)}ms")
 
 
-# futanari {tbh dont know what this is}
+# futanari (chicks with dicks)
 @client.command()
 async def futanari(ctx):
     if not ctx.channel.is_nsfw():
@@ -609,7 +605,7 @@ async def futanari(ctx):
         Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !futanari result: {futanari}   time:{round(client.latency * 1000)}ms")
 
 
-# holowed {dk what this is either}
+# hololewd {dk what this is either}
 @client.command()
 async def hololewd(ctx):
     if not ctx.channel.is_nsfw():
@@ -1570,8 +1566,8 @@ async def contribute(ctx):
     g = random.randint(0, 255)
     b = random.randint(0, 255)
     embed = discord.Embed(
-        title='contributon',
-        description='contribution to the project is always welcome, feel free to contribute, edit, ,clean up, document, and improve the source code at: https://github.com/Eddy-Arch/hentai-discord-bot',
+        title='contribution',
+        description='contribution to the project is always welcome, feel free to contribute, edit, clean up, document and improve the source code at: https://github.com/Eddy-Arch/hentai-discord-bot',
         colour=discord.Colour.from_rgb(r, g, b)
     )
     neko = nekos.img("neko")
@@ -1678,4 +1674,3 @@ while t != 10:
     t+= 1
     if(t == 3):
         exit()
-
