@@ -1,17 +1,7 @@
-import discord
-import asyncio
-import io
+import discord, asyncio, io, colorama, random, time, requests, nekos, sys, os, config
 from discord.ext import commands
-import colorama
 from colorama import Fore, Back, Style
-import random
-import time
-import requests
-import nekos
 from discord.ext.commands import has_permissions, CheckFailure
-import sys
-import os
-import config
 from config import token, admin_actions_log_channel_id
 from config import general_actions_log_channel_id
 from config import verify_role_name, conf_bot_prefix
