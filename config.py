@@ -9,5 +9,5 @@ general_actions_log_channel_id = 741923499542839330
 welcome_message_channel_name = "general"
 verify_role_name = 'Verified'
 # the prefix to be used
-conf_bot_prefix = "+"
+conf_bot_prefix = "!"
 mute_role_name = 'muted'

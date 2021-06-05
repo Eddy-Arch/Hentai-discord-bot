@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import discord, asyncio, io, colorama, random, time, requests, nekos, sys, os, config
 from discord.ext import commands
 from colorama import Fore, Back, Style
@@ -1325,230 +1326,64 @@ async def pussy(ctx):
 ######################################################################################################################################
 @client.command()
 async def tits(ctx):
-    if not ctx.channel.is_nsfw():
-        author = ctx.message.author
-        await ctx.author.send("```not an nsfw channel```")
-        sys.stderr = object
-    if ctx.channel.is_nsfw():
-        r = random.randint(0, 255)
-        g = random.randint(0, 255)
-        b = random.randint(0, 255)
-        embed = discord.Embed(
-            title=' :flushed:',
-            description='',
-            colour=discord.Colour.from_rgb(r, g, b)
-        )
-    tits = nekos.img("tits")
-
-    embed.set_image(url=tits)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !tits result: {tits}   time:{round(client.latency * 1000)}ms")
+    await nsfwimgfetchfuncs(ctx,"tits","","")
 
 
 ######################################################################################################################################
 @client.command()
 async def waifu(ctx):
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    embed = discord.Embed(
-        title=' :flushed:',
-        description='',
-        colour=discord.Colour.from_rgb(r, g, b)
-    )
-    waifu = nekos.img("waifu")
-
-    embed.set_image(url=waifu)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !waifu result: {waifu}   time:{round(client.latency * 1000)}ms")
+    await imgfetchfuncs(ctx,"waifu","","")
 
 
 ######################################################################################################################################
 @client.command()
 async def boobs(ctx):
-    if not ctx.channel.is_nsfw():
-        author = ctx.message.author
-        await ctx.author.send("```not an nsfw channel```")
-        await ctx.message.delete()
-        sys.stderr = object
-    if ctx.channel.is_nsfw():
-        r = random.randint(0, 255)
-        g = random.randint(0, 255)
-        b = random.randint(0, 255)
-        embed = discord.Embed(
-            title=' :flushed:',
-            description='',
-            colour=discord.Colour.from_rgb(r, g, b)
-        )
-    boobs = nekos.img("boobs")
-
-    embed.set_image(url=boobs)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !boobs result: {boobs}   time:{round(client.latency * 1000)}ms")
+        await nsfwimgfetchfuncs(ctx,"boobs","","")
 
 
 ######################################################################################################################################
 @client.command()
 async def smallboobs(ctx):
-    embed = discord.Embed(
-        title=' :flushed:',
-        description='',
-        colour=discord.Colour.blurple()
-    )
-    smallboobs = nekos.img("smallboobs")
-
-    embed.set_image(url=smallboobs)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !smallboobs result: {smallboobs}   time:{round(client.latency * 1000)}ms")
+    await nsfwimgfetchfuncs(ctx,"smallboobs","","")
 
 
 #######################################################################################################################################
 @client.command()
 async def pat(ctx, member: discord.Member, *, reason=""):
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    embed = discord.Embed(
-        title=f"{ctx.message.author} patted {member.name}",
-        description='',
-        colour=discord.Colour.from_rgb(r, g, b)
-    )
-    pat = nekos.img("pat")
-
-    embed.set_image(url=pat)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !pat result: {pat}   time:{round(client.latency * 1000)}ms")
+    await socialfuncs(ctx,"pat","patted", member, reason)
 
 
 #####################################################################################################################################
-@client.command()
+@client.command(pass_context=True)
 async def kiss(ctx, member: discord.Member, *, reason=""):
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    embed = discord.Embed(
-        title=f"{ctx.message.author} kissed {member.name} {reason}",
-        description='',
-        colour=discord.Colour.from_rgb(r, g, b)
-    )
-    kiss = nekos.img("kiss")
-
-    embed.set_image(url=kiss)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !kiss result: {kiss}   time:{round(client.latency * 1000)}ms")
+    await socialfuncs(ctx,"kiss","kissed", member, reason)
 
 
 #######################################################################################################################################
 @client.command()
 async def spank(ctx, member: discord.Member, *, reason=""):
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    embed = discord.Embed(
-        title=f"{ctx.message.author} spanked {member.name} {reason}",
-        description='',
-        colour=discord.Colour.from_rgb(r, g, b)
-    )
-    spank = nekos.img("spank")
-
-    embed.set_image(url=spank)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !spank result: {spank}   time:{round(client.latency * 1000)}ms")
+    await socialfuncs(ctx,"spank","spanked", member, reason)
 
 
 #######################################################################################################################################
 @client.command()
 async def cuddle(ctx, member: discord.Member, *, reason=""):
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    embed = discord.Embed(
-        title=f"{ctx.message.author} cuddled {member.name} {reason}",
-        description='',
-        colour=discord.Colour.from_rgb(r, g, b)
-    )
-    cuddle = nekos.img("cuddle")
-
-    embed.set_image(url=cuddle)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !cuddle result: {cuddle}   time:{round(client.latency * 1000)}ms")
+    await socialfuncs(ctx,"cuddle","is cuddling with", member, reason)
 
 
 ########################################################################################################################################
 @client.command()
 async def hug(ctx, member: discord.Member, *, reason=""):
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    embed = discord.Embed(
-        title=f"{ctx.message.author} hugged {member.name} {reason}",
-        description='',
-        colour=discord.Colour.from_rgb(r, g, b)
-    )
-    hug = nekos.img("hug")
-
-    embed.set_image(url=hug)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !hug result: {hug}   time:{round(client.latency * 1000)}ms")
+    await socialfuncs(ctx,"hug","hugged", member, reason)
 
 
 ######################################################################################################################################
 @client.command()
-async def fox_girl(ctx):
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    embed = discord.Embed(
-        title=' :flushed:',
-        description='',
-        colour=discord.Colour.from_rgb(r, g, b)
-    )
-    fox_girl = nekos.img("fox_girl")
-
-    embed.set_image(url=fox_girl)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !fox_girl result: {fox_girl}   time:{round(client.latency * 1000)}ms")
+async def foxgirl(ctx):
+    await imgfetchfuncs(ctx, "fox_girl", "", "fox girls > all")
 
 
 ######################################################################################################################################
-@client.command()
-async def neko(ctx):
-    r = random.randint(0, 255)
-    g = random.randint(0, 255)
-    b = random.randint(0, 255)
-    embed = discord.Embed(
-        title=' nekos:flushed:',
-        description='',
-        colour=discord.Colour.from_rgb(r, g, b)
-    )
-    neko = nekos.img("neko")
-
-    embed.set_image(url=neko)
-
-    await ctx.send(embed=embed)
-    print(
-        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command !neko result: {neko}   time:{round(client.latency * 1000)}ms")
-
 
 @client.command()
 async def contribute(ctx):
@@ -1636,6 +1471,90 @@ async def owoify(ctx,*, reason=None):
     await ctx.send(embed=embed)
 
 
+
+# 2b2t alterations
+@client.command()
+async def queuepeak(ctx,*, reason=None):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+
+    embed = discord.Embed(
+        colour=discord.Color.from_rgb(r, g, b)
+    )
+    r = requests.get('https://rebane2001.com/queuepeek/data.json')
+    embed.set_author(name="2B2T queue status")
+    embed.add_field(name='in queue right now:', value=r.json()['queuepos'], inline=False)
+    embed.add_field(name='time to wait', value=r.json()['queueest'], inline=False)
+    if reason == "players":
+        embed.add_field(name='fart', value=r.json()['players'][0]['name'][0:220], inline=False)
+    await ctx.send(embed=embed)
+
+
+ # image fetch style commands
+@client.command()
+async def neko(ctx):
+    await imgfetchfuncs(ctx, "neko", "", "")
+
+@client.command()
+async def smug(ctx):
+    await imgfetchfuncs(ctx, "smug", "smug", "smug doe")
+
+async def imgfetchfuncs(ctx, img_endpoint, title, description):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    embed = discord.Embed(
+        title=title,
+        description=description,
+        colour=discord.Color.from_rgb(r, g, b)
+    )
+    img = nekos.img(img_endpoint)
+
+    embed.set_image(url=img)
+
+    await ctx.send(embed=embed)
+    print(
+        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command {conf_bot_prefix}{title} result: {img}   time:{round(client.latency * 1000)}ms")
+
+async def nsfwimgfetchfuncs(ctx,img_endpoint,title,description):
+    if not ctx.channel.is_nsfw():
+        await ctx.author.send("```not an nsfw channel```")
+        await ctx.message.delete()
+        sys.stderr = object
+    if ctx.channel.is_nsfw():
+        r = random.randint(0, 255)
+        g = random.randint(0, 255)
+        b = random.randint(0, 255)
+        embed = discord.Embed(
+            title=title,
+            description=description,
+            colour=discord.Colour.from_rgb(r, g, b)
+        )
+    img = nekos.img(img_endpoint)
+
+    embed.set_image(url=img)
+
+    await ctx.send(embed=embed)
+    print(
+        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command {conf_bot_prefix}{img_endpoint} result: {img}   time:{round(client.latency * 1000)}ms")
+
+async def socialfuncs(ctx,img_endpoint, action, member, arg=""):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    embed = discord.Embed(
+        title=f"{ctx.message.author} {action} {member.name} {arg}",
+        description='',
+        colour=discord.Colour.from_rgb(r, g, b)
+    )
+    img = nekos.img(img_endpoint)
+
+    embed.set_image(url=img)
+
+    await ctx.send(embed=embed)
+    print(
+        Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command {conf_bot_prefix}{img_endpoint} result: {img}   time:{round(client.latency * 1000)}ms")
 # dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
 client.run(token)
 
