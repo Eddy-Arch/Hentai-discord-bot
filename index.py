@@ -114,6 +114,7 @@ async def help_social(ctx):
     embed3.add_field(name="+cuddle",value='usage: +cuddle @user u cutie', inline=False)
     embed3.add_field(name="+hug",value='usage: +hug @user u cutie', inline=False)
     embed3.add_field(name="+owoify",value='usage: "owoifys" some text', inline=False)
+    embed3.add_field(name="+baka",value='usage: "+baka" @user', inline=False)
     await ctx.author.send(embed=embed3)
 
 @client.command()
@@ -574,6 +575,9 @@ async def neko_gif(ctx):
 async def meow(ctx):
     await imgfetchfuncs(ctx,"meow","","")
 
+@client.command()
+async def baka(ctx, member: discord.Member, *, reason=""):
+    await socialfuncs(ctx, "baka", "doesnt think much of", member, reason)
 
 @client.command()
 async def tickle(ctx, member: discord.Member, *, reason=""):
