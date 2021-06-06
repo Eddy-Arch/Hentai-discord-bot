@@ -882,11 +882,20 @@ async def socialfuncs(ctx,img_endpoint, action, member, arg=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
-    embed = discord.Embed(
-        title=f"{ctx.message.author} {action} {member.name} {arg}",
-        description='',
-        colour=discord.Colour.from_rgb(r, g, b)
-    )
+    await ctx.message.delete()
+    if arg != "":
+        embed = discord.Embed(
+            title=f"{ctx.message.author} {action} {member.name}",
+            description=f'{ctx.message.author.name}: {arg}',
+            colour=discord.Colour.from_rgb(r, g, b)
+        )
+    else:
+        embed = discord.Embed(
+            title=f"{ctx.message.author} {action} {member.name} {arg}",
+            description='',
+            colour=discord.Colour.from_rgb(r, g, b)
+        )
+
     img = nekos.img(img_endpoint)
 
     embed.set_image(url=img)

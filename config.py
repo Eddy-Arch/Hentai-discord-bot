@@ -1,4 +1,4 @@
-token = ""
+token = "NjgwMTEzOTQ2ODgzMjYwNDQ3.Xk7LeA.xeRS3IfUqmppnOzDAkeYGv2BHFs"
 # the id of the chat to send bot logs of admin value i.e
 # (kick, ban, purge, etc)
 admin_actions_log_channel_id = 741923499542839330
