@@ -76,6 +76,9 @@ async def help_nsfw(ctx):
     embed.add_field(name="+nsfw_neko_gif",value='NSFW neko gif', inline=False)
     embed.add_field(name="+solo",value='NSFW solo pic', inline=False)
     embed.add_field(name="+kemonomimi",value="kemonomimi", inline =False)
+    embed.add_field(name="+random",value="random hentai gif", inline =False)
+    embed.add_field(name="+lesbian",value="random lesbian gif", inline =False)
+    embed.add_field(name="+kuni",value="random kuni gif", inline =False)
     await ctx.author.send(embed=embed)
 
 @client.command()
@@ -114,6 +117,7 @@ async def help_social(ctx):
     embed3.add_field(name="+cuddle",value='usage: +cuddle @user u cutie', inline=False)
     embed3.add_field(name="+hug",value='usage: +hug @user u cutie', inline=False)
     embed3.add_field(name="+owoify",value='usage: "owoifys" some text', inline=False)
+    embed3.add_field(name="+baka",value='usage: "+baka" @user', inline=False)
     await ctx.author.send(embed=embed3)
 
 @client.command()
@@ -504,6 +508,9 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 async def feet(ctx):
     await nsfwimgfetchfuncs(ctx,"feet","","")
 
+@client.command()
+async def feet(ctx):
+    await nsfwimgfetchfuncs(ctx,"randomHentaiGif","","")
 
 # print(Fore.WHITE + "["+ Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA+ f"{ctx.author.name} executed command !feet result: {feet}   time:{round(client.latency * 1000)}ms")
 
@@ -564,6 +571,13 @@ async def wallpaper(ctx):
 async def lewdk(ctx):
     await nsfwimgfetchfuncs(ctx,"lewdk","","")
 
+@client.command()
+async def lesbian(ctx):
+    await nsfwimgfetchfuncs(ctx,"lesbian","","")
+
+@client.command()
+async def kuni(ctx):
+    await nsfwimgfetchfuncs(ctx,"kuni","","")
 
 @client.command()
 async def neko_gif(ctx):
@@ -574,6 +588,9 @@ async def neko_gif(ctx):
 async def meow(ctx):
     await imgfetchfuncs(ctx,"meow","","")
 
+@client.command()
+async def baka(ctx, member: discord.Member, *, reason=""):
+    await socialfuncs(ctx, "baka", "doesnt think much of", member, reason)
 
 @client.command()
 async def tickle(ctx, member: discord.Member, *, reason=""):
@@ -878,11 +895,20 @@ async def socialfuncs(ctx,img_endpoint, action, member, arg=""):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
-    embed = discord.Embed(
-        title=f"{ctx.message.author} {action} {member.name} {arg}",
-        description='',
-        colour=discord.Colour.from_rgb(r, g, b)
-    )
+    await ctx.message.delete()
+    if arg != "":
+        embed = discord.Embed(
+            title=f"{ctx.message.author} {action} {member.name}",
+            description=f'{ctx.message.author.name}: {arg}',
+            colour=discord.Colour.from_rgb(r, g, b)
+        )
+    else:
+        embed = discord.Embed(
+            title=f"{ctx.message.author} {action} {member.name} {arg}",
+            description='',
+            colour=discord.Colour.from_rgb(r, g, b)
+        )
+
     img = nekos.img(img_endpoint)
 
     embed.set_image(url=img)
