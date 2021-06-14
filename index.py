@@ -5,7 +5,7 @@ from colorama import Fore, Back, Style
 from discord.ext.commands import has_permissions, CheckFailure
 from config import token, admin_actions_log_channel_id
 from config import general_actions_log_channel_id
-from config import verify_role_name, conf_bot_prefix
+from config import verify_role_name, conf_bot_prefix, logging_enabled
 from config import mute_role_name
 from datetime import datetime
 from colorama import init
@@ -182,21 +182,22 @@ async def verify(ctx, * role: discord.Role):
 
 @client.event
 async def on_message(message):
-    with io.open("chatlogs.txt", "a", encoding="utf-8") as f:
-        f.write(
-            "[{}] | [{}] | [{}] @ {}: {}\n".format(message.guild,
-                                                   message.channel,
-                                                   message.author,
-                                                   message.created_at,
-                                                   message.content))
-    f.close()
-    print(
-        Fore.WHITE + "[" + Fore.LIGHTRED_EX + '+' + Fore.WHITE + "]"
-        + Fore.LIGHTRED_EX + "[{}] | [{}] | [{}] @ {}: {}".format(
-            message.guild, message.channel, message.author,
-            message.created_at, message.content))
+    if logging_enabled: 
+        with io.open("chatlogs.txt", "a", encoding="utf-8") as f:
+            f.write(
+                "[{}] | [{}] | [{}] @ {}: {}\n".format(message.guild,
+                                                       message.channel,
+                                                       message.author,
+                                                       message.created_at,
+                                                       message.content))
+        f.close()
+        print(
+            Fore.WHITE + "[" + Fore.LIGHTRED_EX + '+' + Fore.WHITE + "]"
+            + Fore.LIGHTRED_EX + "[{}] | [{}] | [{}] @ {}: {}".format(
+                message.guild, message.channel, message.author,
+                message.created_at, message.content))
 
-    await client.process_commands(message)
+        await client.process_commands(message)
 
 
 @client.event
