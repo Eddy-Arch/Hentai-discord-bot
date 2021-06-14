@@ -76,6 +76,9 @@ async def help_nsfw(ctx):
     embed.add_field(name="+nsfw_neko_gif",value='NSFW neko gif', inline=False)
     embed.add_field(name="+solo",value='NSFW solo pic', inline=False)
     embed.add_field(name="+kemonomimi",value="kemonomimi", inline =False)
+    embed.add_field(name="+random",value="random hentai gif", inline =False)
+    embed.add_field(name="+lesbian",value="random lesbian gif", inline =False)
+    embed.add_field(name="+kuni",value="random kuni gif", inline =False)
     await ctx.author.send(embed=embed)
 
 @client.command()
@@ -505,6 +508,9 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 async def feet(ctx):
     await nsfwimgfetchfuncs(ctx,"feet","","")
 
+@client.command()
+async def feet(ctx):
+    await nsfwimgfetchfuncs(ctx,"randomHentaiGif","","")
 
 # print(Fore.WHITE + "["+ Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA+ f"{ctx.author.name} executed command !feet result: {feet}   time:{round(client.latency * 1000)}ms")
 
@@ -565,6 +571,13 @@ async def wallpaper(ctx):
 async def lewdk(ctx):
     await nsfwimgfetchfuncs(ctx,"lewdk","","")
 
+@client.command()
+async def lesbian(ctx):
+    await nsfwimgfetchfuncs(ctx,"lesbian","","")
+
+@client.command()
+async def kuni(ctx):
+    await nsfwimgfetchfuncs(ctx,"kuni","","")
 
 @client.command()
 async def neko_gif(ctx):
