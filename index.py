@@ -163,6 +163,9 @@ async def help_misc(ctx):
     embed5.add_field(name="+coronavirus", value = 'usage: !coronavirus \
                      <country>. gives you the current world stats o\
                      f the pandemic')
+    embed5.add_field(name="+goose", value="random image of a goose")
+    embed5.add_field(name="+lizard", value="random image of a lizard")
+    embed5.add_field(name="+8ball", value="play 8 ball.")
     await ctx.author.send(embed=embed5)
 
 print(
@@ -508,10 +511,6 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 async def feet(ctx):
     await nsfwimgfetchfuncs(ctx,"feet","","")
 
-@client.command()
-async def feet(ctx):
-    await nsfwimgfetchfuncs(ctx,"randomHentaiGif","","")
-
 # print(Fore.WHITE + "["+ Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA+ f"{ctx.author.name} executed command !feet result: {feet}   time:{round(client.latency * 1000)}ms")
 
 # YURI
@@ -611,6 +610,13 @@ async def feed(ctx, member: discord.Member, *, reason=""):
 async def gecg(ctx):
     await imgfetchfuncs(ctx,"gecg","","")
 
+@client.command()
+async def goose(ctx):
+    await imgfetchfuncs(ctx,"goose","","")
+
+@client.command()
+async def lizard(ctx):
+    await imgfetchfuncs(ctx,"lizard","","")
 
 @client.command()
 async def eroyuri(ctx):
@@ -822,6 +828,21 @@ async def owoify(ctx,*, reason=None):
     embed.add_field(name=text[0:256], value='‎', inline=False)
     await ctx.send(embed=embed)
 
+@client.command()
+async def eightball(ctx,*, reason=None):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    author = ctx.message.author
+
+
+    embed = discord.Embed(
+        colour=discord.Color.from_rgb(r, g, b)
+    )
+    text = nekos.eightball()
+    #print(text)
+    embed.add_field(name=text[0:256], value='‎', inline=False)
+    await ctx.send(embed=embed)
 
 
 # 2b2t alterations
