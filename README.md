@@ -8,7 +8,7 @@ its quite good at moderating
 and it logs everything said in  chat into a txt file.
 
 ## Live instances
-### currently, there is one instance of the bot,
+### currently, there are two instances of the bot
 which you can add to your server using this link.
 [HERE](https://github.com/Eddy-Arch/Hentai-discord-bot/blob/experimental/docs/INSTANCES.md) you can find a list of all the live instances.
 
