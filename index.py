@@ -511,10 +511,6 @@ async def kick(ctx, member: discord.Member, *, reason=None):
 async def feet(ctx):
     await nsfwimgfetchfuncs(ctx,"feet","","")
 
-@client.command()
-async def feet(ctx):
-    await nsfwimgfetchfuncs(ctx,"randomHentaiGif","","")
-
 # print(Fore.WHITE + "["+ Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA+ f"{ctx.author.name} executed command !feet result: {feet}   time:{round(client.latency * 1000)}ms")
 
 # YURI
@@ -833,7 +829,7 @@ async def owoify(ctx,*, reason=None):
     await ctx.send(embed=embed)
 
 @client.command()
-async def 8ball(ctx,*, reason=None):
+async def eightball(ctx,*, reason=None):
     r = random.randint(0, 255)
     g = random.randint(0, 255)
     b = random.randint(0, 255)
