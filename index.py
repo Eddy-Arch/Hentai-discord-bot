@@ -182,7 +182,7 @@ async def verify(ctx, * role: discord.Role):
 
 @client.event
 async def on_message(message):
-    if logging_enabled: 
+    if logging_enabled == True: 
         with io.open("chatlogs.txt", "a", encoding="utf-8") as f:
             f.write(
                 "[{}] | [{}] | [{}] @ {}: {}\n".format(message.guild,
@@ -197,6 +197,13 @@ async def on_message(message):
                 message.guild, message.channel, message.author,
                 message.created_at, message.content))
 
+        await client.process_commands(message)
+    else:
+        print(
+            Fore.WHITE + "[" + Fore.LIGHTRED_EX + '+' + Fore.WHITE + "]"
+            + Fore.LIGHTRED_EX + "[{}] | [{}] | [{}] @ {}: {}".format(
+                message.guild, message.channel, message.author,
+                message.created_at, message.content))
         await client.process_commands(message)
 
 
