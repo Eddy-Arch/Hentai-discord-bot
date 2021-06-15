@@ -893,7 +893,13 @@ async def imgfetchfuncs(ctx, img_endpoint, title, description):
 
 async def nsfwimgfetchfuncs(ctx,img_endpoint,title,description):
     if not ctx.channel.is_nsfw():
-        await ctx.author.send("```not an nsfw channel```")
+        error_embed = discord.Embed(
+            colour=discord.Colour.red()
+        )
+        error_embed.add_field(name="Error", value="You tried running an __**NSFW**__ channel only command in a non __**NSFW**__ channel.\nsorry for the inconvience this might have caused, have a neko.")
+        error_img = nekos.img("neko")
+        error_embed.set_image(url=error_img)
+        await ctx.author.send(embed=error_embed)
         await ctx.message.delete()
         sys.stderr = object
     if ctx.channel.is_nsfw():
