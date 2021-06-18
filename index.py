@@ -3,10 +3,7 @@ import discord, asyncio, io, colorama, random, time, requests, nekos, sys, os, c
 from discord.ext import commands
 from colorama import Fore, Back, Style
 from discord.ext.commands import has_permissions, CheckFailure
-from config import token, admin_actions_log_channel_id
-from config import general_actions_log_channel_id
-from config import verify_role_name, conf_bot_prefix, logging_enabled
-from config import mute_role_name
+from config import *
 from datetime import datetime
 from colorama import init
 
