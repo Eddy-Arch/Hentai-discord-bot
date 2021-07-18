@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-import discord, asyncio, io, colorama, random, time, requests, nekos, sys, os, config
+import discord, asyncio, io, colorama, random
+import time, requests, nekos, sys, os, config
 from discord.ext import commands
 from colorama import Fore, Back, Style
 from discord.ext.commands import has_permissions, CheckFailure
@@ -23,8 +24,10 @@ async def help(ctx,*, reason=None):
     helpembed= discord.Embed(colour=discord.Color.green())
     helpembed.set_author(name="Options")
     helpembed.add_field(name="+help nsfw", value = "available nsfw commands")
-    helpembed.add_field(name="+help more nsfw", value = "more available nsfw commands")
-    helpembed.add_field(name="+help social", value = "available social commands")
+    helpembed.add_field(name="+help more nsfw", value = "more available nsfw\
+            commands")
+    helpembed.add_field(name="+help social", value = "available social\
+            commands")
     helpembed.add_field(name="+help admin", value = "available admin commands")
     helpembed.add_field(name="+help misc", value = "available misc commands")
     if reason == "nsfw":
@@ -58,15 +61,18 @@ async def help_nsfw(ctx):
     embed.add_field(name="+lewdkemo",value='NSFW lewdkemo pics', inline=False)
     embed.add_field(name="+solo_gif",value='NSFW solo gifs', inline=False)
     embed.add_field(name="+feet_gif",value='NSFW feet gif', inline=False)
-    embed.add_field(name="+cum",value='NSFW cum on catgirls pics', inline=False)
+    embed.add_field(name="+cum",value='NSFW cum on catgirls \
+            pics', inline=False)
     embed.add_field(name="+erokemo", value='NSFW erokemo pics', inline=False)
     embed.add_field(name="+les", value='NSFW les pics', inline=False)
     embed.add_field(name="+wallpaper", value='cute wallpapers', inline=False)
     embed.add_field(name="+lewdk", value='NSFW lewdk pics', inline=False)
-    embed.add_field(name="+neko_gif",value='cute neko pics :flushed:', inline=False)
+    embed.add_field(name="+neko_gif",value='cute neko pics \
+            :flushed:', inline=False)
     embed.add_field(name="+meow", value='cute cat pics', inline=False)
     embed.add_field(name="+lewd",value='lewd catgirls', inline=False)
-    embed.add_field(name="+gegc",value='genetically engineered catgirl memes', inline=False)
+    embed.add_field(name="+gegc",value='genetically engineered catgirl\
+            memes', inline=False)
     embed.add_field(name="+eroyuri",value='NSFW eroyuri', inline=False)
     embed.add_field(name="+eron",value='NSFW eron', inline=False)
     embed.add_field(name="+bj",value='NSFW bj', inline=False)
@@ -83,14 +89,17 @@ async def help_more_nsfw(ctx):
     author = ctx.message.author
     embed2 = discord.Embed(colour=discord.Color.blurple())
     embed2.set_author(name="More NSFW")
-    embed2.add_field(name="+nsfw_avatar", value='NSFW avatar pic for u horny virgins',inline=False)
+    embed2.add_field(name="+nsfw_avatar", value='NSFW avatar pic for u\
+            horny virgins',inline=False)
     embed2.add_field(name="+anal", value='NSFW anal pic', inline=False)
     embed2.add_field(name="+hentai", value='NSFW hentai pic', inline=False)
-    embed2.add_field(name="+avatar",value='generates a dope avatar pic', inline=False)
+    embed2.add_field(name="+avatar",value='generates a dope avatar\
+            pic', inline=False)
     embed2.add_field(name="+erofeet", value='NSFW erofeet', inline=False)
     embed2.add_field(name="+pussy", value='NSFW pussy', inline=False)
     embed2.add_field(name="+tits", value='NSFW tits', inline=False)
-    embed2.add_field(name="+waifu",value='waifu. self explanatory you weeb', inline=False)
+    embed2.add_field(name="+waifu",value='waifu. self explanatory\
+            you weeb', inline=False)
     embed2.add_field(name="+boobs", value='boobs', inline=False)
     embed2.add_field(name="+smallboobs", value='small boobies', inline=False)
     embed2.add_field(name="+fox_girl", value='fox girl pics', inline=False)
@@ -896,6 +905,8 @@ async def imgfetchfuncs(ctx, img_endpoint, title, description):
         Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command {conf_bot_prefix}{title} result: {img}   time:{round(client.latency * 1000)}ms")
 
 async def nsfwimgfetchfuncs(ctx,img_endpoint,title,description):
+    if not nsfw_enabled:
+        return
     if not ctx.channel.is_nsfw():
         error_embed = discord.Embed(
             colour=discord.Colour.red()

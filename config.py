@@ -12,3 +12,4 @@ verify_role_name = 'Verified'
 conf_bot_prefix = "!"
 mute_role_name = 'muted'
 logging_enabled = True
+nsfw_enabled = True
