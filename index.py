@@ -23,17 +23,18 @@ async def help(ctx,*, reason=None):
     author = ctx.message.author
     helpembed= discord.Embed(colour=discord.Color.green())
     helpembed.set_author(name="Options")
-    helpembed.add_field(name="+help nsfw", value = "available nsfw commands")
-    helpembed.add_field(name="+help more nsfw", value = "more available nsfw\
-            commands")
+    if nsfw_enabled == True:
+        helpembed.add_field(name="+help nsfw", value = "available nsfw commands")
+        helpembed.add_field(name="+help more nsfw", value = "more available nsfw\
+                commands")
     helpembed.add_field(name="+help social", value = "available social\
             commands")
     helpembed.add_field(name="+help admin", value = "available admin commands")
     helpembed.add_field(name="+help misc", value = "available misc commands")
-    if reason == "nsfw":
+    if reason == "nsfw" and nsfw_enabled == True:
         await help_nsfw(ctx)
         return
-    if reason == "more nsfw":
+    if reason == "more nsfw" and nsfw_enabled == True:
         await help_more_nsfw(ctx)
         return
     if reason == "social":
@@ -905,7 +906,7 @@ async def imgfetchfuncs(ctx, img_endpoint, title, description):
         Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command {conf_bot_prefix}{title} result: {img}   time:{round(client.latency * 1000)}ms")
 
 async def nsfwimgfetchfuncs(ctx,img_endpoint,title,description):
-    if not nsfw_enabled:
+    if not nsfw_enabled == True:
         return
     if not ctx.channel.is_nsfw():
         error_embed = discord.Embed(
