@@ -1,4 +1,4 @@
-token = ""
+token = "NjgwMTEzOTQ2ODgzMjYwNDQ3.Xk7LeA.LJiE_a8I999JqhHI0qluuYCr8Eo"
 # the id of the chat to send bot logs of admin value i.e
 # (kick, ban, purge, etc)
 admin_actions_log_channel_id = 741923499542839330
@@ -12,4 +12,4 @@ verify_role_name = 'Verified'
 conf_bot_prefix = "!"
 mute_role_name = 'muted'
 logging_enabled = True
-nsfw_enabled = True
+nsfw_enabled = False
