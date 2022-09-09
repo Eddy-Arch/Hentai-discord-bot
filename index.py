@@ -7,12 +7,12 @@ from discord.ext.commands import has_permissions, CheckFailure
 from config import *
 from datetime import datetime
 from colorama import init
+from scripts.txt2img2 import draw_image
 
 init()
 # set the prefix and disable the builtin help command that comes with
 # discord.py
-
-client = commands.Bot(command_prefix=conf_bot_prefix)
+client = commands.Bot(command_prefix=conf_bot_prefix,intents=discord.Intents.all())
 client.remove_command("help")
 
 # all of the available commands sent as a message. it consists of about 5
@@ -960,6 +960,21 @@ async def socialfuncs(ctx,img_endpoint, action, member, arg=""):
     await ctx.send(embed=embed)
     print(
         Fore.WHITE + "[" + Fore.MAGENTA + '+' + Fore.WHITE + "]" + Fore.MAGENTA + f"{ctx.author.name} executed command {conf_bot_prefix}{img_endpoint} result: {img}   time:{round(client.latency * 1000)}ms")
+
+@client.command()
+async def imggen(ctx,*, reason=None):
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    author = ctx.message.author
+    embed = discord.Embed(
+        title="test",
+        description="test",
+        colour=discord.Colour.from_rgb(r, g, b)
+    )
+     
+    embed.set_image(file=draw_image(reason))
+    await ctx.author.send(embed=embed)
 # dummy token in here, well its a dummy now. appearantly discord has a web crawler that found my bots token in here. pretty damn cool.
 client.run(token)
 
