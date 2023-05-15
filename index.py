@@ -13,6 +13,7 @@ init()
 # discord.py
 
 client = commands.Bot(command_prefix=conf_bot_prefix)
+client = commands.Bot(command_prefix=conf_bot_prefix,intents=discord.Intents.all())
 client.remove_command("help")
 
 # all of the available commands sent as a message. it consists of about 5
