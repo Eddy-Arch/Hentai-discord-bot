@@ -1,4 +1,4 @@
-requests==2.22.0
+requests==2.31.0
 discord.py==1.2.5
 colorama==0.4.1
 discord==1.0.1
